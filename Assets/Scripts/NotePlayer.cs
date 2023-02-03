@@ -16,6 +16,8 @@ public class NotePlayer : MonoBehaviour
         
     public BeatMap beatMap;
 
+    public float StartingSecond { get; set; } = 0;
+
     private List<TapNote> tapNoteList = new();
     private List<HoldNote> holdNoteList = new();
     private List<FlickNote> flickNoteList = new();
@@ -33,10 +35,11 @@ public class NotePlayer : MonoBehaviour
     [Button]
     public void Play(int _beat)
     {
+        StartingSecond = _beat * beatMap.SecPerBeat;
         AllocateLanes();
         for (int i = 0; i < laneList.Count; ++i)
         {
-            laneList[i].Spawn();
+            laneList[i].StartedPlaying = true;
         }
     }
 
