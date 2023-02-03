@@ -52,6 +52,24 @@ public class BeatMapEditor : OdinEditorWindow
     }
 
     [HorizontalGroup("Media Buttons")]
+    [Button(ButtonSizes.Large), GUIColor(0f, 0f, 1)]
+    public void Pause()
+    {
+        if (songPlayer == null || songPlayerObject == null)
+            return;
+        if (songPlayer.paused)
+        {
+            songPlayer.Resume();
+            active = true;
+        }
+        else
+        {
+            songPlayer.Pause();
+            active = false;
+        }
+    }
+
+    [HorizontalGroup("Media Buttons")]
     [Button(ButtonSizes.Large), GUIColor(1, 0f, 0)]
     public void Stop()
     {

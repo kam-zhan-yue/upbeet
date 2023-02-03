@@ -108,7 +108,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(tapNoteList[i].transform))
             {
                 tapNoteList[i].UnInit();
-                noteFactory.TapNotePool.Release(tapNoteList[i]);
                 tapNoteList.RemoveAt(i);
             }
         }
@@ -118,7 +117,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(holdNoteList[i].transform))
             {
                 holdNoteList[i].UnInit();
-                noteFactory.HoldNotePool.Release(holdNoteList[i]);
                 holdNoteList.RemoveAt(i);
             }
         }
@@ -128,7 +126,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(flickNoteList[i].transform))
             {
                 flickNoteList[i].UnInit();
-                noteFactory.FlickNotePool.Release(flickNoteList[i]);
                 flickNoteList.RemoveAt(i);
             }
         }
@@ -154,21 +151,18 @@ public class NotePlayer : MonoBehaviour
         for (int i = tapNoteList.Count-1; i >=0; --i)
         {
             tapNoteList[i].UnInit();
-            noteFactory.TapNotePool.Release(tapNoteList[i]);
             tapNoteList.RemoveAt(i);
         }
         
         for (int i = holdNoteList.Count-1; i >=0; --i)
         {
             holdNoteList[i].UnInit();
-            noteFactory.HoldNotePool.Release(holdNoteList[i]);
             holdNoteList.RemoveAt(i);
         }
         
         for (int i = flickNoteList.Count-1; i >=0; --i)
         {
             flickNoteList[i].UnInit();
-            noteFactory.FlickNotePool.Release(flickNoteList[i]);
             flickNoteList.RemoveAt(i);
         }
     }

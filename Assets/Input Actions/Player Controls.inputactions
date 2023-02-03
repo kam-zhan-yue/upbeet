@@ -1,0 +1,134 @@
+{
+    "name": "Player Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "f27580ca-f773-4587-bfc7-dec45f015f03",
+            "actions": [
+                {
+                    "name": "Left Lane 1",
+                    "type": "Button",
+                    "id": "e46f013e-acd3-4c1a-a2f3-68c8c79fd4c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Lane 2",
+                    "type": "Button",
+                    "id": "2ba8c886-95c6-469f-9eaa-4c620d6c3ff6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left Lane 3",
+                    "type": "Button",
+                    "id": "dbdc0083-a114-4b0b-9b49-5608db3ef26e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Lane 1",
+                    "type": "Button",
+                    "id": "49e7f03c-48e7-4ef0-8718-4f40a794a344",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Lane 2",
+                    "type": "Button",
+                    "id": "f9efbb8e-765b-4578-8093-f8caac599219",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right Lane 3",
+                    "type": "Button",
+                    "id": "2d10bae2-3237-4424-bb80-80484a21aedc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e9df9d12-0597-4cd6-b956-173e8a071d7a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Lane 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5eecdb10-2b1c-4d0a-9ed8-e4e7f2a7385f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Lane 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cf1575a-5a9c-42fe-a3e2-31db1de7a38c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Lane 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "167b2ebf-0d2b-4817-a9f0-48e338b5e0bf",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Lane 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a64e146-bbca-4422-b633-1875b72f2e86",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Lane 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0086d84-62e0-4a0d-b28e-d17dd655a453",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Lane 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

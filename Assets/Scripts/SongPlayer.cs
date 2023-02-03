@@ -32,6 +32,7 @@ public class SongPlayer : MonoBehaviour
     //Pause Variables
     private float pauseOffset = 0f;
     private float pausedTimeStamp = 0f;
+    public bool paused = false;
 
     public int CurrentBeat => currentBeat;
     public float SongPositionInBeats => songPositionInBeats;
@@ -68,6 +69,7 @@ public class SongPlayer : MonoBehaviour
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
         playing = true;
+        paused = false;
         
         //Set the paused time to 0
         pauseOffset = 0;
@@ -101,6 +103,7 @@ public class SongPlayer : MonoBehaviour
         audioSource.Pause();
         playing = false;
         pausedTimeStamp = (float)(AudioSettings.dspTime);
+        paused = true;
     }
     
     [FoldoutGroup("Editor Functions")]
@@ -111,6 +114,7 @@ public class SongPlayer : MonoBehaviour
         playing = true;
         float totalElapsedPauseTime = (float)(AudioSettings.dspTime - pausedTimeStamp);
         pauseOffset += totalElapsedPauseTime;
+        paused = false;
     }
 
     [FoldoutGroup("Editor Functions")]
@@ -119,5 +123,6 @@ public class SongPlayer : MonoBehaviour
     {
         audioSource.Stop();
         playing = false;
+        paused = false;
     }
 }

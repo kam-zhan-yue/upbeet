@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public abstract class Note : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public abstract class Note : MonoBehaviour
         beat = _beat;
     }
 
-    public void UnInit()
+    public virtual void UnInit()
     {
         lane.RemoveNote(this);
     }
