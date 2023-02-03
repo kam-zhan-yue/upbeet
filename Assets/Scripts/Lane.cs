@@ -21,6 +21,7 @@ public class Lane : MonoBehaviour
 
     private void ClearNotes()
     {
+        nextNoteToSpawn_idx = 0;
         noteSpawnList.Clear();
     }
 
@@ -53,13 +54,15 @@ public class Lane : MonoBehaviour
             while (nextNoteToSpawn_idx < noteSpawnList.Count)
             {
                 // TODO only spawn notes within a range
-                
+
 
                 // TODO account for delay (when starting from the middle of the song)
                 // use this in some way
-                //notePlayer.StartingSecond;
 
-                float distance = notePlayer.noteSpeed * noteSpawnList[nextNoteToSpawn_idx].position;
+
+                print("starting second: " + notePlayer.StartingSecond);
+                print("note spawn position: " + noteSpawnList[nextNoteToSpawn_idx].position);
+                float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - notePlayer.StartingSecond);
                 Vector3 spawnPosition = notePlayer.scoreThreshold.position;
 
 
