@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
-    public bool StartedPlaying { get; set; }
+    public bool IsPlaying { get; set; }
+    public float SecondsIntoTrack { get; set; }
 
     public Transform laneBackground;
     private List<NoteSpawnData> noteSpawnList = new();
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
-    private float secondsIntoTrack;
     private const float offscreenDistance = 10.0f;
     private int nextNoteToSpawn_idx = 0;
-    
+
     public void Init(NotePlayer _notePlayer)
     {
         notePlayer = _notePlayer;
         ClearNotes();
-        secondsIntoTrack = notePlayer.StartingSecond;
     }
 
     private void ClearNotes()
@@ -34,20 +33,19 @@ public class Lane : MonoBehaviour
 
     private void Update()
     {
-        if (StartedPlaying)
+        if (IsPlaying)
         {
-            secondsIntoTrack += Time.deltaTime;
+            SecondsIntoTrack += Time.deltaTime;
 
             // check which notes to spawn
             while (nextNoteToSpawn_idx < noteSpawnList.Count)
             {
-                float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - secondsIntoTrack);
+                float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - SecondsIntoTrack);
                 if (distance > offscreenDistance)
                 {
                     break;
                 }
 
-                print("nextNoteToSpawn_idx: " + nextNoteToSpawn_idx + " has distance: " + distance);
                 Vector3 spawnPosition = notePlayer.scoreThreshold.position;
 
                 // set x to the lane itself and adjust y to the right distance

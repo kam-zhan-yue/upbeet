@@ -37,9 +37,10 @@ public class NotePlayer : MonoBehaviour
     {
         StartingSecond = _beat * beatMap.SecPerBeat;
         AllocateLanes();
-        for (int i = 0; i < laneList.Count; ++i)
+        foreach (Lane lane in laneList)
         {
-            laneList[i].StartedPlaying = true;
+            lane.IsPlaying = true;
+            lane.SecondsIntoTrack = StartingSecond;
         }
     }
 
@@ -138,11 +139,19 @@ public class NotePlayer : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
+        foreach (Lane lane in laneList)
+        {
+            lane.IsPlaying = false;
+        }
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
+        foreach (Lane lane in laneList)
+        {
+            lane.IsPlaying = true;
+        }
     }
 
     public void RemoveNote(Note _note)
@@ -179,6 +188,10 @@ public class NotePlayer : MonoBehaviour
         for (int i = flickNoteList.Count-1; i >=0; --i)
         {
             flickNoteList[i].UnInit();
+        }
+        foreach (Lane lane in laneList)
+        {
+            lane.IsPlaying = false;
         }
     }
 }
