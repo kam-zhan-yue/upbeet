@@ -12,7 +12,7 @@ public class SongPlayer : MonoBehaviour
     private BeatMap beatMap;
     
     //Current song position, in seconds
-    public FloatReference songPosition;
+    public FloatReference songPosition = new FloatReference();
     
     //Current song position, in beats
     [NonSerialized, ShowInInspector, ReadOnly]

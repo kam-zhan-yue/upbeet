@@ -62,11 +62,12 @@ public class NotePlayer : MonoBehaviour
             {
                 //Skip if the note is empty
                 NoteType noteType = beatMap.GetNoteType(i, j);
-                if (noteType == NoteType.Empty)
+                if (noteType is NoteType.Empty or NoteType.HoldTrail)
                     continue;
                 
                 float beatPositionInSeconds = beatMap.GetBeatPositionInSeconds(j);
-                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds);
+                float endTrailPosition = beatMap.GetEndTrailPosition(i, j);
+                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, endTrailPosition);
                 laneList[i].AddNoteSpawnData(spawnData);
             }
         }

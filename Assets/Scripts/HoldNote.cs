@@ -5,4 +5,5 @@ using UnityEngine.Pool;
 
 public class HoldNote : Note
 {
+    public int trailEndBeatPosition = 0;
 }

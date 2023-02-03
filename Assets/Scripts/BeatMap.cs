@@ -43,18 +43,34 @@ public class BeatMap : SerializedScriptableObject
         beatMap = new NoteType[lanes, totalBeats];
     }
 
-    public NoteType GetNoteType(int _lanes, int _beat)
+    public NoteType GetNoteType(int _lane, int _beat)
     {
         int lowerBound0 = beatMap.GetLowerBound(0);
         int upperBound0 = beatMap.GetUpperBound(0);
         int lowerBound1 = beatMap.GetLowerBound(1);
         int upperBound1 = beatMap.GetUpperBound(1);
-        if (_lanes < lowerBound0 ||
-            _lanes > upperBound0 ||
+        if (_lane < lowerBound0 ||
+            _lane > upperBound0 ||
             _beat < lowerBound1 ||
             _beat > upperBound1)
             return NoteType.Empty;
-        return beatMap[_lanes, _beat];
+        return beatMap[_lane, _beat];
+    }
+
+    public float GetEndTrailPosition(int _lane, int _beat)
+    {
+        NoteType noteType = GetNoteType(_lane, _beat);
+        if (noteType != NoteType.Hold)
+            return 0;
+        int trails = 0;
+        //Start from the wave beat and move up
+        for (int i = _beat-1; i >= 0; --i)
+        {
+            NoteType type = GetNoteType(_lane, i);
+            if (type == NoteType.HoldTrail)
+                trails++;
+        }
+        return trails * SecPerBeat;
     }
 
     private static NoteType DrawCell(Rect _rect, NoteType _value)
@@ -66,8 +82,9 @@ public class BeatMap : SerializedScriptableObject
                 //Change the value of the cell
                 NoteType.Empty => NoteType.Tap,
                 NoteType.Tap => NoteType.Hold,
-                NoteType.Hold => NoteType.Flick,
-                NoteType.Flick => NoteType.Empty,
+                NoteType.Hold => NoteType.HoldTrail,
+                NoteType.HoldTrail =>  NoteType.Empty,
+                // NoteType.Flick => NoteType.Empty,
                 _ => _value
             };
             GUI.changed = true;
@@ -80,6 +97,7 @@ public class BeatMap : SerializedScriptableObject
             NoteType.Empty => StaticHelper.EmptyColour,
             NoteType.Tap => StaticHelper.TapColour,
             NoteType.Hold => StaticHelper.HoldColour,
+            NoteType.HoldTrail => StaticHelper.HoldTrailColour,
             NoteType.Flick => StaticHelper.FlickColour,
             _ => StaticHelper.EmptyColour
         };

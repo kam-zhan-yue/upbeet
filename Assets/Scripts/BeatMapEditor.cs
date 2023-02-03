@@ -156,6 +156,7 @@ public class BeatMapEditor : OdinEditorWindow
             NoteType.Tap => StaticHelper.TapColour,
             NoteType.Hold => StaticHelper.HoldColour,
             NoteType.Flick => StaticHelper.FlickColour,
+            NoteType.HoldTrail => StaticHelper.HoldTrailColour,
             _ => StaticHelper.EmptyColour
         };
     }
