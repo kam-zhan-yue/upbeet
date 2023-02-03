@@ -2,46 +2,112 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using MEC;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class NotePlayer : MonoBehaviour
 {
-    public NoteFactory noteFactory;
-    public List<Lane> laneList = new();
-    public Transform scoreThreshold;
-    public Transform despawnThreshold;
+    [BoxGroup("Setup")] public NoteFactory noteFactory;
+    [BoxGroup("Setup")] public List<Lane> laneList = new();
+    [BoxGroup("Setup")] public Transform scoreThreshold;
+    [BoxGroup("Setup")] public Transform despawnThreshold;
+    [BoxGroup("Variables")] public float noteSpeed = 0;
+        
+    public BeatMap beatMap;
 
     private List<TapNote> tapNoteList = new();
     private List<HoldNote> holdNoteList = new();
     private List<FlickNote> flickNoteList = new();
 
-    private void Awake()
+    public void Init(BeatMap _beatMap)
     {
-        Timing.RunCoroutine(TestSpawnNotes());
+        beatMap = _beatMap;
+        for (int i = 0; i < laneList.Count; ++i)
+        {
+            laneList[i].Init(this);
+        }
     }
 
-    private IEnumerator<float> TestSpawnNotes()
+    [FoldoutGroup("Editor Functions")]
+    [Button]
+    public void Play(int _beat)
     {
-        while (true)
+        AllocateLanes();
+        for (int i = 0; i < laneList.Count; ++i)
         {
-            //Get all starting from 1 to avoid empty notes
-            NoteType noteType = (NoteType) Random.Range(1, Enum.GetValues(typeof(NoteType)).Length);
-            SpawnNote(noteType);
-            Debug.Log("Spawning: "+noteType);
-            yield return Timing.WaitForSeconds(1f);
+            laneList[i].Spawn();
         }
+    }
+
+    private void AllocateLanes()
+    {
+        int lanes = beatMap.GetTotalLanes();
+        int beats = beatMap.GetTotalBeats();
+        
+        //TODO: Implement a way to dynamically change the number of lanes!
+        if (laneList.Count < lanes)
+        {
+            Debug.LogWarning("There are not enough lanes for this song!");
+            return;
+        }
+
+        for (int i = 0; i < lanes; ++i)
+        {
+            for (int j = 0; j < beats; ++j)
+            {
+                //Skip if the note is empty
+                NoteType noteType = beatMap.GetNoteType(i, j);
+                Debug.Log(noteType);
+                if (noteType == NoteType.Empty)
+                    continue;
+                
+                float beatPositionInSeconds = beatMap.GetBeatPositionInSeconds(j);
+                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds);
+                laneList[i].AddNoteSpawnData(spawnData);
+            }
+        }
+    }
+    
+    public Note InstantiateNote(NoteType _noteType, Vector3 _position)
+    {
+        switch (_noteType)
+        {
+            case NoteType.Tap:
+                TapNote tapNote = noteFactory.TapNotePool.Get();
+                tapNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                tapNoteList.Add(tapNote);
+                return tapNote;
+            case NoteType.Hold:
+                HoldNote holdNote = noteFactory.HoldNotePool.Get();
+                holdNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                holdNoteList.Add(holdNote);
+                return holdNote;
+            case NoteType.Flick:
+                FlickNote flickNote = noteFactory.FlickNotePool.Get();
+                flickNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                flickNoteList.Add(flickNote);
+                return flickNote;
+            case NoteType.Empty:
+            default:
+                break;
+        }
+
+        return null;
     }
 
     private void Update()
     {
+        CheckCanDespawn();
+    }
+
+    private void CheckCanDespawn()
+    {
         for (int i = tapNoteList.Count-1; i >=0; --i)
         {
-            Vector3 note = tapNoteList[i].transform.position;
-            note.y -= 0.01f;
-            tapNoteList[i].transform.position = note;
             if (CanDespawn(tapNoteList[i].transform))
             {
+                tapNoteList[i].UnInit();
                 noteFactory.TapNotePool.Release(tapNoteList[i]);
                 tapNoteList.RemoveAt(i);
             }
@@ -49,11 +115,9 @@ public class NotePlayer : MonoBehaviour
         
         for (int i = holdNoteList.Count-1; i >=0; --i)
         {
-            Vector3 note = holdNoteList[i].transform.position;
-            note.y -= 0.01f;
-            holdNoteList[i].transform.position = note;
             if (CanDespawn(holdNoteList[i].transform))
             {
+                holdNoteList[i].UnInit();
                 noteFactory.HoldNotePool.Release(holdNoteList[i]);
                 holdNoteList.RemoveAt(i);
             }
@@ -61,11 +125,9 @@ public class NotePlayer : MonoBehaviour
         
         for (int i = flickNoteList.Count-1; i >=0; --i)
         {
-            Vector3 note = flickNoteList[i].transform.position;
-            note.y -= 0.01f;
-            flickNoteList[i].transform.position = note;
             if (CanDespawn(flickNoteList[i].transform))
             {
+                flickNoteList[i].UnInit();
                 noteFactory.FlickNotePool.Release(flickNoteList[i]);
                 flickNoteList.RemoveAt(i);
             }
@@ -74,37 +136,6 @@ public class NotePlayer : MonoBehaviour
 
     private bool CanDespawn(Transform _transform)
     {
-        return _transform.position.y < despawnThreshold.position.y;
-    }
-
-    private void OnDestroy()
-    {
-        Timing.KillCoroutines();
-    }
-
-    private void SpawnNote(NoteType _noteType)
-    {
-        Vector3 spawnPosition = laneList[0].spawnPoint.position;
-        switch (_noteType)
-        {
-            case NoteType.Tap:
-                TapNote tapNote = noteFactory.TapNotePool.Get();
-                tapNote.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
-                tapNoteList.Add(tapNote);
-                break;
-            case NoteType.Hold:
-                HoldNote holdNote = noteFactory.HoldNotePool.Get();
-                holdNote.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
-                holdNoteList.Add(holdNote);
-                break;
-            case NoteType.Flick:
-                FlickNote flickNote = noteFactory.FlickNotePool.Get();
-                flickNote.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
-                flickNoteList.Add(flickNote);
-                break;
-            case NoteType.Empty:
-            default:
-                break;
-        }
+        return _transform.position.y <= despawnThreshold.position.y;
     }
 }

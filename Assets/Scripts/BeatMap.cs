@@ -87,6 +87,12 @@ public class BeatMap : SerializedScriptableObject
         return _value;
     }
 
+    public float GetBeatPositionInSeconds(int _beat)
+    {
+        int realBeat = ConvertBeat(_beat);
+        return realBeat * SecPerBeat;
+    }
+
     public int ConvertBeat(int _currentBeat)
     {
         float songDuration = song.length;
@@ -94,5 +100,15 @@ public class BeatMap : SerializedScriptableObject
         //Minus 1 because of the array
         int reverseBeat = totalBeats - _currentBeat - 1;
         return reverseBeat;
+    }
+
+    public int GetTotalLanes()
+    {
+        return beatMap.GetUpperBound(0) + 1;
+    }
+
+    public int GetTotalBeats()
+    {
+        return beatMap.GetUpperBound(1) + 1;
     }
 }
