@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,10 @@ public class TestingPopup : Popup
 {
     [FoldoutGroup("System Objects")] public BeatMapDatabase beatMapDatabase;
     [FoldoutGroup("System Objects")] public SongController songController;
+    [FoldoutGroup("System Objects")] public IntReference combo;
+    [FoldoutGroup("System Objects")] public IntReference perfectHits;
+    [FoldoutGroup("System Objects")] public IntReference okayHits;
+    [FoldoutGroup("System Objects")] public IntReference badHits;
     
     [FoldoutGroup("UI Objects")] public TMP_Dropdown dropdown;
     [FoldoutGroup("UI Objects")] public TMP_InputField beatInputField;
@@ -19,6 +24,7 @@ public class TestingPopup : Popup
     [FoldoutGroup("UI Objects")] public Button resumeButton;
     [FoldoutGroup("UI Objects")] public Button stopButton;
     [FoldoutGroup("UI Objects")] public TMP_Text beatText;
+    [FoldoutGroup("UI Objects")] public TMP_Text descriptionText;
 
     public override void InitPopup()
     {
@@ -93,6 +99,11 @@ public class TestingPopup : Popup
         songController.Resume();
         pauseButton.gameObject.SetActiveFast(true);
         resumeButton.gameObject.SetActiveFast(false);
+    }
+
+    public void UpdateDescription()
+    {
+        descriptionText.text = $"Combo: {combo.Value}, Perfect: {perfectHits.Value}, Okay: {okayHits.Value}, Bad: {badHits.Value}";
     }
     
     public void Stop()

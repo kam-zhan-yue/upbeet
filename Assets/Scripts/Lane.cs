@@ -54,7 +54,7 @@ public class Lane : MonoBehaviour
 
                 // spawn the note using the note player
                 Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition);
-                note.Init(notePlayer, this, noteSpawnList[nextNoteToSpawn_idx].beat);
+                note.Init(notePlayer, this, noteSpawnList[nextNoteToSpawn_idx].beat, noteSpawnList[nextNoteToSpawn_idx].position);
                 noteList.Add(note);
 
                 // now check the next note

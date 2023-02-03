@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class SongPlayer : MonoBehaviour
@@ -11,8 +12,7 @@ public class SongPlayer : MonoBehaviour
     private BeatMap beatMap;
     
     //Current song position, in seconds
-    [NonSerialized, ShowInInspector, ReadOnly]
-    private float songPosition = 0f;
+    public FloatReference songPosition;
     
     //Current song position, in beats
     [NonSerialized, ShowInInspector, ReadOnly]
@@ -80,10 +80,10 @@ public class SongPlayer : MonoBehaviour
         if (!playing)
             return;
         //determine how many seconds since the song started
-        songPosition = (float)(AudioSettings.dspTime - dspSongTime);
+        songPosition.Value = (float)(AudioSettings.dspTime - dspSongTime);
         
         //If the song has been paused at any time, minus the offset calculated in the pause
-        songPosition -= pauseOffset;
+        songPosition.Value -= pauseOffset;
 
         //determine how many beats since the song started
         songPositionInBeats = songPosition / beatMap.SecPerBeat;

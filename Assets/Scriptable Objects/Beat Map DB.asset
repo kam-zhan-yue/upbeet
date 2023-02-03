@@ -22,4 +22,5 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   beatMapList:
+  - {fileID: 11400000, guid: 4e7eafa3322118947bf1fc0b00fa7bb1, type: 2}
   - {fileID: 11400000, guid: 4512af06a6515a84aa69e070a8413bab, type: 2}

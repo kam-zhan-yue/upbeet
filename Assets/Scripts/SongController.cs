@@ -6,11 +6,13 @@ public class SongController : MonoBehaviour
 {
     public SongPlayer songPlayer;
     public NotePlayer notePlayer;
+    public ScoreController scoreController;
 
     public void Init(BeatMap _beatMap)
     {
         songPlayer.Init(_beatMap);
         notePlayer.Init(_beatMap);
+        scoreController.Init();
     }
     
     public void Play(int _beat = 0)
@@ -35,5 +37,6 @@ public class SongController : MonoBehaviour
     {
         songPlayer.Stop();
         notePlayer.Stop();
+        scoreController.UnInit();
     }
 }

@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class TapBox : MonoBehaviour
 {
-    Collider2D[] hitColliders = new Collider2D[10];
+    public ScoreController scoreController;
+    private Collider2D[] hitColliders = new Collider2D[10];
+
+    public void Init(ScoreController _scoreController)
+    {
+        scoreController = _scoreController;
+    }
     
-    public void TapDown()
+    public void TapDown(float _time)
     {
         // int size = Physics.OverlapBoxNonAlloc(gameObject.transform.position, transform.localScale, hitColliders);
         Transform transform1 = transform;
@@ -16,6 +22,7 @@ public class TapBox : MonoBehaviour
         {
             if(hitColliders[i] != null && hitColliders[i].gameObject.TryGetComponent<TapNote>(out TapNote tapNote))
             {
+                scoreController.ProcessTapNote(tapNote, _time);
                 tapNote.UnInit();
             }
         }
