@@ -1,4 +1,6 @@
-public abstract class Note
+using UnityEngine;
+
+public abstract class Note : MonoBehaviour
 {
     private int beat;
 

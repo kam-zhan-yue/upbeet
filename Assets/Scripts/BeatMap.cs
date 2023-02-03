@@ -17,7 +17,7 @@ public class BeatMap : SerializedScriptableObject
     public int hitsPerBeat = 1;
     
     [BoxGroup("Setup")]
-    public int tracks = 1;
+    public int lanes = 1;
     
     //Logic Variables
     public float SecPerBeat => 60f / (songBpm * hitsPerBeat);
@@ -40,21 +40,21 @@ public class BeatMap : SerializedScriptableObject
         }
         float songDuration = song.length;
         int totalBeats = (int)(songDuration / SecPerBeat);
-        beatMap = new NoteType[tracks, totalBeats];
+        beatMap = new NoteType[lanes, totalBeats];
     }
 
-    public NoteType GetNoteType(int _track, int _beat)
+    public NoteType GetNoteType(int _lanes, int _beat)
     {
         int lowerBound0 = beatMap.GetLowerBound(0);
         int upperBound0 = beatMap.GetUpperBound(0);
         int lowerBound1 = beatMap.GetLowerBound(1);
         int upperBound1 = beatMap.GetUpperBound(1);
-        if (_track < lowerBound0 ||
-            _track > upperBound0 ||
+        if (_lanes < lowerBound0 ||
+            _lanes > upperBound0 ||
             _beat < lowerBound1 ||
             _beat > upperBound1)
             return NoteType.Empty;
-        return beatMap[_track, _beat];
+        return beatMap[_lanes, _beat];
     }
 
     private static NoteType DrawCell(Rect _rect, NoteType _value)

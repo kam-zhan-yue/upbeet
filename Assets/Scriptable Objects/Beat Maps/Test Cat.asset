@@ -1191,4 +1191,4 @@ MonoBehaviour:
   song: {fileID: 8300000, guid: a0327d8ec471013459ee6e2d53979ce1, type: 3}
   songBpm: 90
   hitsPerBeat: 2
-  tracks: 4
+  lanes: 4

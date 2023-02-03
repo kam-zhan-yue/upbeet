@@ -75,55 +75,55 @@ public class BeatMapEditor : OdinEditorWindow
         Repaint();
     }
     
-    [HorizontalGroup("Tracks")]
-    [GUIColor("GetTrackOneColour")]
+    [HorizontalGroup("Lanes")]
+    [GUIColor("GetLaneOneColour")]
     [Button("", ButtonSizes.Large)]
-    public void TrackOne()
+    public void LaneOne()
     {
     }
     
-    [HorizontalGroup("Tracks")]
-    [GUIColor("GetTrackTwoColour")]
+    [HorizontalGroup("Lanes")]
+    [GUIColor("GetLaneTwoColour")]
     [Button("", ButtonSizes.Large)]
-    public void TrackTwo()
+    public void LaneTwo()
     {
     }
     
-    [HorizontalGroup("Tracks")]
-    [GUIColor("GetTrackThreeColour")]
+    [HorizontalGroup("Lanes")]
+    [GUIColor("GetLaneThreeColour")]
     [Button("", ButtonSizes.Large)]
-    public void TrackThree()
+    public void LaneThree()
     {
     }
     
-    [HorizontalGroup("Tracks")]
-    [GUIColor("GetTrackFourColour")]
+    [HorizontalGroup("Lanes")]
+    [GUIColor("GetLaneFourColour")]
     [Button("", ButtonSizes.Large)]
-    public void TrackFour()
+    public void LaneFour()
     {
     }
     
-    private Color GetTrackOneColour()
+    private Color GetLaneOneColour()
     {
         return GetTileColour(0);
     }
     
-    private Color GetTrackTwoColour()
+    private Color GetLaneTwoColour()
     {
         return GetTileColour(1);
     }
     
-    private Color GetTrackThreeColour()
+    private Color GetLaneThreeColour()
     {
         return GetTileColour(2);
     }
     
-    private Color GetTrackFourColour()
+    private Color GetLaneFourColour()
     {
         return GetTileColour(3);
     }
     
-    private Color GetTileColour(int _track)
+    private Color GetTileColour(int _lane)
     {
         if (beatMap == null || !active)
         {
@@ -131,7 +131,7 @@ public class BeatMapEditor : OdinEditorWindow
         }
 
         int beatMapBeat = beatMap.ConvertBeat(currentBeat);
-        NoteType note = beatMap.GetNoteType(_track, beatMapBeat);
+        NoteType note = beatMap.GetNoteType(_lane, beatMapBeat);
         return note switch
         {
             NoteType.Empty => StaticHelper.EmptyColour,
