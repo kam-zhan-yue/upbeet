@@ -138,4 +138,38 @@ public class NotePlayer : MonoBehaviour
     {
         return _transform.position.y <= despawnThreshold.position.y;
     }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void Stop()
+    {
+        for (int i = tapNoteList.Count-1; i >=0; --i)
+        {
+            tapNoteList[i].UnInit();
+            noteFactory.TapNotePool.Release(tapNoteList[i]);
+            tapNoteList.RemoveAt(i);
+        }
+        
+        for (int i = holdNoteList.Count-1; i >=0; --i)
+        {
+            holdNoteList[i].UnInit();
+            noteFactory.HoldNotePool.Release(holdNoteList[i]);
+            holdNoteList.RemoveAt(i);
+        }
+        
+        for (int i = flickNoteList.Count-1; i >=0; --i)
+        {
+            flickNoteList[i].UnInit();
+            noteFactory.FlickNotePool.Release(flickNoteList[i]);
+            flickNoteList.RemoveAt(i);
+        }
+    }
 }

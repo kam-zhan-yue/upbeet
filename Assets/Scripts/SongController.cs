@@ -22,15 +22,18 @@ public class SongController : MonoBehaviour
     public void Pause()
     {
         songPlayer.Pause();
+        notePlayer.Pause();
     }
 
     public void Resume()
     {
         songPlayer.Resume();
+        notePlayer.Resume();
     }
 
     public void Stop()
     {
         songPlayer.Stop();
+        notePlayer.Stop();
     }
 }
