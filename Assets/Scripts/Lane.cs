@@ -29,6 +29,22 @@ public class Lane : MonoBehaviour
         noteSpawnList.Add(_spawnData);
     }
 
+    public void Spawn()
+    {
+        for (int i = 0; i < noteSpawnList.Count; ++i)
+        {
+            float distance = notePlayer.noteSpeed * noteSpawnList[i].position;
+            Vector3 spawnPosition = notePlayer.scoreThreshold.position;
+            //Set x to the lane itself and adjust y to the right distance
+            spawnPosition.x = transform.position.x;
+            spawnPosition.y += distance;
+            //Spawn the note using the note player
+            Note note = notePlayer.InstantiateNote(noteSpawnList[i].noteType, spawnPosition);
+            note.Init(notePlayer, this, noteSpawnList[i].beat);
+            noteList.Add(note);
+        }
+    }
+
     private void Update()
     {
         if (StartedPlaying)
@@ -53,7 +69,7 @@ public class Lane : MonoBehaviour
 
                 //Spawn the note using the note player
                 Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition);
-                note.Init(this, noteSpawnList[nextNoteToSpawn_idx].beat);
+                note.Init(notePlayer, this, noteSpawnList[nextNoteToSpawn_idx].beat);
                 noteList.Add(note);
 
                 // now check the next note

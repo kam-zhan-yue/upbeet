@@ -77,19 +77,16 @@ public class NotePlayer : MonoBehaviour
         {
             case NoteType.Tap:
                 TapNote tapNote = noteFactory.TapNotePool.Get();
-                tapNote.SetPool(noteFactory.TapNotePool);
                 tapNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 tapNoteList.Add(tapNote);
                 return tapNote;
             case NoteType.Hold:
                 HoldNote holdNote = noteFactory.HoldNotePool.Get();
-                holdNote.SetPool(noteFactory.HoldNotePool);
                 holdNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 holdNoteList.Add(holdNote);
                 return holdNote;
             case NoteType.Flick:
                 FlickNote flickNote = noteFactory.FlickNotePool.Get();
-                flickNote.SetPool(noteFactory.FlickNotePool);
                 flickNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 flickNoteList.Add(flickNote);
                 return flickNote;
@@ -113,7 +110,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(tapNoteList[i].transform))
             {
                 tapNoteList[i].UnInit();
-                tapNoteList.RemoveAt(i);
             }
         }
         
@@ -122,7 +118,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(holdNoteList[i].transform))
             {
                 holdNoteList[i].UnInit();
-                holdNoteList.RemoveAt(i);
             }
         }
         
@@ -131,7 +126,6 @@ public class NotePlayer : MonoBehaviour
             if (CanDespawn(flickNoteList[i].transform))
             {
                 flickNoteList[i].UnInit();
-                flickNoteList.RemoveAt(i);
             }
         }
     }
@@ -151,24 +145,40 @@ public class NotePlayer : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void RemoveNote(Note _note)
+    {
+        switch (_note)
+        {
+            case TapNote note:
+                tapNoteList.Remove(note);
+                noteFactory.TapNotePool.Release(note);
+                break;
+            case HoldNote note:
+                holdNoteList.Remove(note);
+                noteFactory.HoldNotePool.Release(note);
+                break;
+            case FlickNote note:
+                flickNoteList.Remove(note);
+                noteFactory.FlickNotePool.Release(note);
+                break;
+        }
+    }
+
     public void Stop()
     {
         for (int i = tapNoteList.Count-1; i >=0; --i)
         {
             tapNoteList[i].UnInit();
-            tapNoteList.RemoveAt(i);
         }
         
         for (int i = holdNoteList.Count-1; i >=0; --i)
         {
             holdNoteList[i].UnInit();
-            holdNoteList.RemoveAt(i);
         }
         
         for (int i = flickNoteList.Count-1; i >=0; --i)
         {
             flickNoteList[i].UnInit();
-            flickNoteList.RemoveAt(i);
         }
     }
 }

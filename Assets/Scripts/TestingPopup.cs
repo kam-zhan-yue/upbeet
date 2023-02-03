@@ -26,7 +26,7 @@ public class TestingPopup : Popup
         List<TMP_Dropdown.OptionData> optionList = new();
         for (int i = 0; i < beatMapDatabase.beatMapList.Count; ++i)
         {
-            String songName = beatMapDatabase.beatMapList[i].song.name;
+            String songName = beatMapDatabase.beatMapList[i].name;
             TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
             optionData.text = songName;
             optionList.Add(optionData);
@@ -52,10 +52,10 @@ public class TestingPopup : Popup
 
     public void Play()
     {
-        String beatText = beatInputField.text;
-        if (String.IsNullOrEmpty(beatText))
+        String beatTextString = beatInputField.text;
+        if (String.IsNullOrEmpty(beatTextString))
             PlaySong(-1);
-        else if (int.TryParse(beatText, out int beat))
+        else if (int.TryParse(beatTextString, out int beat))
             PlaySong(beat);
         else
             Debug.LogError("Please input a beat first");
@@ -63,8 +63,8 @@ public class TestingPopup : Popup
 
     private void PlaySong(int _beat)
     {
-        String songName = dropdown.options[dropdown.value].text;
-        if (!beatMapDatabase.TryGetBeatMap(songName, out BeatMap beatMap))
+        String beatMapName = dropdown.options[dropdown.value].text;
+        if (!beatMapDatabase.TryGetBeatMap(beatMapName, out BeatMap beatMap))
             return;
 
         songController.Init(beatMap);

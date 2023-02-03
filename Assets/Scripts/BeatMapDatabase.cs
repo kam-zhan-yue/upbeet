@@ -13,7 +13,7 @@ public class BeatMapDatabase : SerializedScriptableObject
     {
         for (int i = 0; i < beatMapList.Count; ++i)
         {
-            if (beatMapList[i].song.name == _name)
+            if (beatMapList[i].name == _name)
             {
                 _beatMap = beatMapList[i];
                 return true;
