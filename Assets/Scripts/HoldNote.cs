@@ -21,6 +21,55 @@ public class HoldNote : Note
         //Minus offset twice so that it will cover up until the end of the next note
         localScale.y = _spawnData.trailDistance - OFFSET * 2;
         trailNoteTransform.localScale = localScale;
-        Debug.Log($"Trail Distance {_spawnData.trailDistance}, Trail End Position: {_spawnData.trailEndPosition}");
+    }
+
+    public override void Move(float _deltaTime)
+    {
+        Transform transform1 = transform;
+        //If at the score threshold, stop if there is a trail. Continue if no trail
+        if (ReachedScoreThreshold(transform1))
+        {
+            if (!TrailNoteReduced())
+            {
+                //Drop the center point lower and lower
+                Vector3 localPosition = trailNoteTransform.localPosition;
+                localPosition.y -= speed * _deltaTime * 0.5f;
+                trailNoteTransform.localPosition = localPosition;
+                //Reduce the local scale lower and lower
+                Vector3 localScale = trailNoteTransform.localScale;
+                localScale.y -= speed * _deltaTime;
+                trailNoteTransform.localScale = localScale;
+            }
+            else
+            {
+                MoveDown(transform1, _deltaTime);
+            }
+        }
+        else
+        {
+            MoveDown(transform1, _deltaTime);
+        }
+    }
+
+    private void MoveDown(Transform _transform, float _deltaTime)
+    {
+        Vector3 position = _transform.position;
+        position.y -= speed * _deltaTime;
+        _transform.position = position;
+    }
+    
+    public override bool CanDespawn()
+    {
+        return ReachedScoreThreshold(transform) && TrailNoteReduced();
+    }
+
+    private bool ReachedScoreThreshold(Transform _transform)
+    {
+        return _transform.position.y <= scoreThresholdY;
+    }
+
+    private bool TrailNoteReduced()
+    {
+        return trailNoteTransform.localScale.y <= 0;
     }
 }

@@ -77,8 +77,8 @@ public class NotePlayer : MonoBehaviour
                 float trailEndPosition = beatMap.GetBeatPositionInSeconds(trailEndBeat);
                 float trailDistance = (trailEndPosition - beatPositionInSeconds) * noteSpeed;
 
-                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, 
-                    trailEndBeatLength, trailEndPosition, trailDistance);
+                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, trailDistance, noteSpeed, 
+                    scoreThreshold.position.y, despawnThreshold.position.y);
                 laneList[i].AddNoteSpawnData(spawnData);
             }
         }
@@ -120,7 +120,7 @@ public class NotePlayer : MonoBehaviour
     {
         for (int i = tapNoteList.Count-1; i >=0; --i)
         {
-            if (CanDespawn(tapNoteList[i].transform))
+            if (tapNoteList[i].CanDespawn())
             {
                 tapNoteList[i].UnInit();
             }
@@ -128,7 +128,7 @@ public class NotePlayer : MonoBehaviour
         
         for (int i = holdNoteList.Count-1; i >=0; --i)
         {
-            if (CanDespawn(holdNoteList[i].transform))
+            if (holdNoteList[i].CanDespawn())
             {
                 holdNoteList[i].UnInit();
             }
@@ -136,16 +136,11 @@ public class NotePlayer : MonoBehaviour
         
         for (int i = flickNoteList.Count-1; i >=0; --i)
         {
-            if (CanDespawn(flickNoteList[i].transform))
+            if (flickNoteList[i].CanDespawn())
             {
                 flickNoteList[i].UnInit();
             }
         }
-    }
-
-    private bool CanDespawn(Transform _transform)
-    {
-        return _transform.position.y <= despawnThreshold.position.y;
     }
 
     public void Pause()

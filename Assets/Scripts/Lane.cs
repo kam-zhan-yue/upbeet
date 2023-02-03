@@ -72,14 +72,7 @@ public class Lane : MonoBehaviour
     
     private void MoveNote(Note _note)
     {
-        // _note.transform.position = Vector3.MoveTowards(_note.transform.position, 
-        //     notePlayer.despawnThreshold.transform.position,
-        //     notePlayer.noteSpeed * Time.deltaTime);
-
-        Transform transform1 = _note.transform;
-        Vector3 position = transform1.position;
-        position.y -= notePlayer.noteSpeed * Time.deltaTime;
-        transform1.position = position;
+        _note.Move(Time.deltaTime);
     }
 
     public void RemoveNote(Note _note)

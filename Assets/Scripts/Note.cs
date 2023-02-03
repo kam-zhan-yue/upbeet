@@ -9,8 +9,9 @@ public abstract class Note : MonoBehaviour
     private float position;
     private bool missed = false;
     private bool hit = false;
-    private int trailEndBeat = 0;
-    private float trailEndBeatPosition = 0f;
+    protected float speed = 0f;
+    protected float scoreThresholdY = 0f;
+    protected float despawnThresholdY = 0f;
     public bool Missed => missed;
     public bool Hit => hit;
     public bool CanHit => !missed && !hit;
@@ -23,8 +24,9 @@ public abstract class Note : MonoBehaviour
         lane = _lane;
         beat = _spawnData.beat;
         position = _spawnData.position;
-        trailEndBeat = _spawnData.trailEndBeatLength;
-        trailEndBeatPosition = _spawnData.trailEndPosition;
+        speed = _spawnData.speed;
+        scoreThresholdY = _spawnData.scoreThresholdY;
+        despawnThresholdY = _spawnData.despawnThresholdY;
         missed = false;
         hit = false;
     }
@@ -45,4 +47,8 @@ public abstract class Note : MonoBehaviour
     {
         hit = true;
     }
+
+    public abstract void Move(float _deltaTime);
+
+    public abstract bool CanDespawn();
 }
