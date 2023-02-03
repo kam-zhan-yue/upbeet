@@ -10,13 +10,14 @@ public class Lane : MonoBehaviour
     private List<NoteSpawnData> noteSpawnList = new();
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
-
+    private float secondsIntoTrack;
     private int nextNoteToSpawn_idx = 0;
-
+    
     public void Init(NotePlayer _notePlayer)
     {
         notePlayer = _notePlayer;
         ClearNotes();
+        secondsIntoTrack = notePlayer.StartingSecond;
     }
 
     private void ClearNotes()
@@ -30,47 +31,29 @@ public class Lane : MonoBehaviour
         noteSpawnList.Add(_spawnData);
     }
 
-    public void Spawn()
-    {
-        for (int i = 0; i < noteSpawnList.Count; ++i)
-        {
-            float distance = notePlayer.noteSpeed * noteSpawnList[i].position;
-            Vector3 spawnPosition = notePlayer.scoreThreshold.position;
-            //Set x to the lane itself and adjust y to the right distance
-            spawnPosition.x = transform.position.x;
-            spawnPosition.y += distance;
-            //Spawn the note using the note player
-            Note note = notePlayer.InstantiateNote(noteSpawnList[i].noteType, spawnPosition);
-            note.Init(notePlayer, this, noteSpawnList[i].beat);
-            noteList.Add(note);
-        }
-    }
-
     private void Update()
     {
         if (StartedPlaying)
         {
+            secondsIntoTrack += Time.deltaTime;
+
             // check which notes to spawn
             while (nextNoteToSpawn_idx < noteSpawnList.Count)
             {
-                // TODO only spawn notes within a range
+                float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - secondsIntoTrack);
+                if (distance > 10.0)
+                {
+                    break;
+                }
 
-
-                // TODO account for delay (when starting from the middle of the song)
-                // use this in some way
-
-
-                print("starting second: " + notePlayer.StartingSecond);
-                print("note spawn position: " + noteSpawnList[nextNoteToSpawn_idx].position);
-                float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - notePlayer.StartingSecond);
+                print("nextNoteToSpawn_idx: " + nextNoteToSpawn_idx + " has distance: " + distance);
                 Vector3 spawnPosition = notePlayer.scoreThreshold.position;
 
-
-                //Set x to the lane itself and adjust y to the right distance
+                // set x to the lane itself and adjust y to the right distance
                 spawnPosition.x = transform.position.x;
                 spawnPosition.y += distance;
 
-                //Spawn the note using the note player
+                // spawn the note using the note player
                 Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition);
                 note.Init(notePlayer, this, noteSpawnList[nextNoteToSpawn_idx].beat);
                 noteList.Add(note);

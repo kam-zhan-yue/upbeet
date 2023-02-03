@@ -57,7 +57,7 @@ public class NotePlayer : MonoBehaviour
 
         for (int i = 0; i < lanes; ++i)
         {
-            for (int j = 0; j < beats; ++j)
+            for (int j = beats - 1; j > 0; --j)
             {
                 //Skip if the note is empty
                 NoteType noteType = beatMap.GetNoteType(i, j);
