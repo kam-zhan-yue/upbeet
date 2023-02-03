@@ -10,6 +10,7 @@ public class TapBox : MonoBehaviour
     public void TapDown()
     {
         int size = Physics.OverlapBoxNonAlloc(gameObject.transform.position, transform.localScale / 2, hitColliders, Quaternion.identity);
+        Debug.Log("Down" + size);
         for (int i = 0; i < size; ++i)
         {
             if(hitColliders[i].gameObject.TryGetComponent<TapNote>(out TapNote tapNote))

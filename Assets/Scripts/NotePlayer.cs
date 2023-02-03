@@ -58,7 +58,6 @@ public class NotePlayer : MonoBehaviour
             {
                 //Skip if the note is empty
                 NoteType noteType = beatMap.GetNoteType(i, j);
-                Debug.Log(noteType);
                 if (noteType == NoteType.Empty)
                     continue;
                 
@@ -75,16 +74,19 @@ public class NotePlayer : MonoBehaviour
         {
             case NoteType.Tap:
                 TapNote tapNote = noteFactory.TapNotePool.Get();
+                tapNote.SetPool(noteFactory.TapNotePool);
                 tapNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 tapNoteList.Add(tapNote);
                 return tapNote;
             case NoteType.Hold:
                 HoldNote holdNote = noteFactory.HoldNotePool.Get();
+                holdNote.SetPool(noteFactory.HoldNotePool);
                 holdNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 holdNoteList.Add(holdNote);
                 return holdNote;
             case NoteType.Flick:
                 FlickNote flickNote = noteFactory.FlickNotePool.Get();
+                flickNote.SetPool(noteFactory.FlickNotePool);
                 flickNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
                 flickNoteList.Add(flickNote);
                 return flickNote;
