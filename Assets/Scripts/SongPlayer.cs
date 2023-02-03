@@ -27,16 +27,23 @@ public class SongPlayer : MonoBehaviour
     private int currentBeat = 0;
     private int previousBeat = 0;
     private int beatOffset = 0;
+    private bool playing = false;
 
     public int CurrentBeat => currentBeat;
-    
+
     [FoldoutGroup("Editor Functions")]
     [Button]
     public void Init(BeatMap _beatMap)
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        if(audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
         beatMap = _beatMap;
         audioSource.clip = beatMap.song;
+    }
+
+    private void Update()
+    {
+        Tick();
     }
 
     [FoldoutGroup("Editor Functions")]
@@ -55,10 +62,13 @@ public class SongPlayer : MonoBehaviour
         
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
+        playing = true;
     }
     
     public void Tick()
     {
+        if (!playing)
+            return;
         //determine how many seconds since the song started
         songPosition = (float)(AudioSettings.dspTime - dspSongTime);
 
@@ -75,8 +85,25 @@ public class SongPlayer : MonoBehaviour
 
     [FoldoutGroup("Editor Functions")]
     [Button]
+    public void Pause()
+    {
+        audioSource.Pause();
+        playing = false;
+    }
+    
+    [FoldoutGroup("Editor Functions")]
+    [Button]
+    public void Resume()
+    {
+        audioSource.Play();
+        playing = true;
+    }
+
+    [FoldoutGroup("Editor Functions")]
+    [Button]
     public void Stop()
     {
         audioSource.Stop();
+        playing = false;
     }
 }

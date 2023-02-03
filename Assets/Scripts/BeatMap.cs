@@ -3,7 +3,7 @@ using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Beat Map", menuName = "BeatMap")]
+[CreateAssetMenu(fileName = "New Beat Map", menuName = "Beat Map")]
 public class BeatMap : SerializedScriptableObject
 {
     //Public Setup Variables
