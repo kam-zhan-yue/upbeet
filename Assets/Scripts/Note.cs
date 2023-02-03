@@ -9,18 +9,22 @@ public abstract class Note : MonoBehaviour
     private float position;
     private bool missed = false;
     private bool hit = false;
+    private int trailEndBeat = 0;
+    private float trailEndBeatPosition = 0f;
     public bool Missed => missed;
     public bool Hit => hit;
     public bool CanHit => !missed && !hit;
 
     public float Position => position;
 
-    public void Init(NotePlayer _notePlayer, Lane _lane, int _beat, float _position)
+    public virtual void Init(NotePlayer _notePlayer, Lane _lane, NoteSpawnData _spawnData)
     {
         notePlayer = _notePlayer;
         lane = _lane;
-        beat = _beat;
-        position = _position;
+        beat = _spawnData.beat;
+        position = _spawnData.position;
+        trailEndBeat = _spawnData.trailEndBeatLength;
+        trailEndBeatPosition = _spawnData.trailEndPosition;
         missed = false;
         hit = false;
     }

@@ -57,7 +57,7 @@ public class BeatMap : SerializedScriptableObject
         return beatMap[_lane, _beat];
     }
 
-    public float GetEndTrailPosition(int _lane, int _beat)
+    public int GetEndTrailBeatLength(int _lane, int _beat)
     {
         NoteType noteType = GetNoteType(_lane, _beat);
         if (noteType != NoteType.Hold)
@@ -69,8 +69,10 @@ public class BeatMap : SerializedScriptableObject
             NoteType type = GetNoteType(_lane, i);
             if (type == NoteType.HoldTrail)
                 trails++;
+            else
+                break;
         }
-        return trails * SecPerBeat;
+        return trails;
     }
 
     private static NoteType DrawCell(Rect _rect, NoteType _value)

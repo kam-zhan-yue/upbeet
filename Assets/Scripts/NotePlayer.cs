@@ -66,8 +66,19 @@ public class NotePlayer : MonoBehaviour
                     continue;
                 
                 float beatPositionInSeconds = beatMap.GetBeatPositionInSeconds(j);
-                float endTrailPosition = beatMap.GetEndTrailPosition(i, j);
-                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, endTrailPosition);
+                
+                //Get the length and the end beat in array index form
+                int trailEndBeatLength = beatMap.GetEndTrailBeatLength(i, j);
+                
+                //Minus 1 to help it reach the end of the next note
+                int trailEndBeat = j - trailEndBeatLength - 1;
+                
+                //Get the position of the end of the trail and deduct for trail time
+                float trailEndPosition = beatMap.GetBeatPositionInSeconds(trailEndBeat);
+                float trailDistance = (trailEndPosition - beatPositionInSeconds) * noteSpeed;
+
+                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, 
+                    trailEndBeatLength, trailEndPosition, trailDistance);
                 laneList[i].AddNoteSpawnData(spawnData);
             }
         }
