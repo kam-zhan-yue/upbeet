@@ -11,6 +11,7 @@ public class Lane : MonoBehaviour
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
     private float secondsIntoTrack;
+    private const float offscreenDistance = 10.0f;
     private int nextNoteToSpawn_idx = 0;
     
     public void Init(NotePlayer _notePlayer)
@@ -41,7 +42,7 @@ public class Lane : MonoBehaviour
             while (nextNoteToSpawn_idx < noteSpawnList.Count)
             {
                 float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - secondsIntoTrack);
-                if (distance > 10.0)
+                if (distance > offscreenDistance)
                 {
                     break;
                 }
