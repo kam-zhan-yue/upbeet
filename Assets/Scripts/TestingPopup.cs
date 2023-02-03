@@ -45,6 +45,11 @@ public class TestingPopup : Popup
         gameObject.SetActiveFast(false);
     }
 
+    private void Update()
+    {
+        beatText.text = "Beat: " + songController.songPlayer.SongPositionInBeats;
+    }
+
     public void Play()
     {
         String beatText = beatInputField.text;

@@ -28,8 +28,13 @@ public class SongPlayer : MonoBehaviour
     private int previousBeat = 0;
     private int beatOffset = 0;
     private bool playing = false;
+    
+    //Pause Variables
+    private float pauseOffset = 0f;
+    private float pausedTimeStamp = 0f;
 
     public int CurrentBeat => currentBeat;
+    public float SongPositionInBeats => songPositionInBeats;
 
     [FoldoutGroup("Editor Functions")]
     [Button]
@@ -63,6 +68,9 @@ public class SongPlayer : MonoBehaviour
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime;
         playing = true;
+        
+        //Set the paused time to 0
+        pauseOffset = 0;
     }
     
     public void Tick()
@@ -71,6 +79,9 @@ public class SongPlayer : MonoBehaviour
             return;
         //determine how many seconds since the song started
         songPosition = (float)(AudioSettings.dspTime - dspSongTime);
+        
+        //If the song has been paused at any time, minus the offset calculated in the pause
+        songPosition -= pauseOffset;
 
         //determine how many beats since the song started
         songPositionInBeats = songPosition / beatMap.SecPerBeat;
@@ -89,6 +100,7 @@ public class SongPlayer : MonoBehaviour
     {
         audioSource.Pause();
         playing = false;
+        pausedTimeStamp = (float)(AudioSettings.dspTime);
     }
     
     [FoldoutGroup("Editor Functions")]
@@ -97,6 +109,8 @@ public class SongPlayer : MonoBehaviour
     {
         audioSource.Play();
         playing = true;
+        float totalElapsedPauseTime = (float)(AudioSettings.dspTime - pausedTimeStamp);
+        pauseOffset += totalElapsedPauseTime;
     }
 
     [FoldoutGroup("Editor Functions")]
