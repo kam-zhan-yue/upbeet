@@ -11,6 +11,8 @@ public class PopupManager : MonoBehaviour
     [FoldoutGroup("System Objects")] public SongController songController;
     
     [FoldoutGroup("UI Objects")] public MainMenuPopup mainMenuPopup;
+    [FoldoutGroup("UI Objects")] public PausePopup pausePopup;
+    [FoldoutGroup("UI Objects")] public GamePopup gamePopup;
     
     private void Awake()
     {
@@ -24,6 +26,12 @@ public class PopupManager : MonoBehaviour
     {
         songController.Init(_beatMap);
         songController.Play();
+        gamePopup.ShowPopup();
+    }
+
+    public void PauseButtonPressed()
+    {
+        pausePopup.PauseButtonClicked();
     }
 
     public void PauseButtonClicked()
@@ -45,6 +53,7 @@ public class PopupManager : MonoBehaviour
     {
         songController.Stop();
         songController.CloseNotePlayer();
+        gamePopup.HidePopup();
         mainMenuPopup.ShowSongSelection();
     }
 

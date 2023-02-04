@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -9,6 +10,7 @@ public class PausePopup : Popup
 {
     [FoldoutGroup("System Objects")] public BoolVariable gamePlaying;
     
+    [FoldoutGroup("UI Objects")] public RectTransform mainHolder;
     [FoldoutGroup("UI Objects")] public RectTransform mediaHolder;
     [FoldoutGroup("UI Objects")] public CountdownPopupItem countdownItem;
     
@@ -21,6 +23,7 @@ public class PausePopup : Popup
         playerControls = new PlayerControls();
         playerControls.Player.Pause.started += PauseStarted;
         playerControls.Enable();
+        mainHolder.gameObject.SetActiveFast(false);
         HidePopup();
     }
 
@@ -32,6 +35,7 @@ public class PausePopup : Popup
     public override void ShowPopup()
     {
         gameObject.SetActiveFast(true);
+        mainHolder.gameObject.SetActiveFast(true);
         mediaHolder.gameObject.SetActiveFast(true);
         countdownItem.gameObject.SetActiveFast(false);
         base.ShowPopup();
@@ -68,6 +72,7 @@ public class PausePopup : Popup
         {
             countdownActive = false;
             PopupManager.instance.ResumeButtonClicked();
+            mainHolder.gameObject.SetActiveFast(false);
             HidePopup();
         });
     }
@@ -75,18 +80,25 @@ public class PausePopup : Popup
     public void RestartButtonClicked()
     {
         PopupManager.instance.RestartButtonClicked();
+        mainHolder.gameObject.SetActiveFast(false);
         HidePopup();
     }
 
     public void ExitButtonClicked()
     {
         PopupManager.instance.ExitButtonClicked();
+        mainHolder.gameObject.SetActiveFast(false);
         HidePopup();
     }
 
     public override void HidePopup()
     {
-        gameObject.SetActiveFast(false);
         base.HidePopup();
+    }
+
+    private void OnDestroy()
+    {
+        playerControls.Player.Pause.started -= PauseStarted;
+        playerControls.Disable();
     }
 }

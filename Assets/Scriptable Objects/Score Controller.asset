@@ -48,3 +48,9 @@ MonoBehaviour:
     _constant: {fileID: 0}
     _variable: {fileID: 11400000, guid: 3eadb89ec8354b745a997ad57b0965a7, type: 2}
     _variableInstancer: {fileID: 0}
+  score:
+    _usage: 0
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}

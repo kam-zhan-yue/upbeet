@@ -15,6 +15,7 @@ public class ScoreController : SerializedScriptableObject
     public IntReference okayHits;
     public IntReference badHits;
     public IntReference combo;
+    public FloatReference score;
 
     public void Init()
     {
