@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5b1a4eec0dc7d7449d8bf3dc5cfa879, type: 3}
-  m_Name: Roots - Hard
+  m_Name: Roots - Medium
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
