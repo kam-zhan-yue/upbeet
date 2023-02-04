@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[1] == null || !isActiveAndEnabled)
             return;
         tapBoxes[1].TapDown(songPosition);
-        Debug.Log(tapBoxes[1].gameObject.name);
-        Debug.Log(gameObject.GetInstanceID());
     }
 
     private void LeftLane3Started(InputAction.CallbackContext _callbackContext)
@@ -59,7 +57,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[2] == null || !isActiveAndEnabled)
             return;
         tapBoxes[2].TapDown(songPosition);
-        Debug.Log(tapBoxes[2].gameObject.name);
     }
 
     private void MiddleLaneStarted(InputAction.CallbackContext _callbackContext)
@@ -67,7 +64,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[3] == null || !isActiveAndEnabled)
             return;
         tapBoxes[3].TapDown(songPosition);
-        Debug.Log(tapBoxes[3].gameObject.name);
     }
 
     private void RightLane1Started(InputAction.CallbackContext _callbackContext)
@@ -75,7 +71,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[4] == null || !isActiveAndEnabled)
             return;
         tapBoxes[4].TapDown(songPosition);
-        Debug.Log(tapBoxes[4].gameObject.name);
     }
 
     private void RightLane2Started(InputAction.CallbackContext _callbackContext)
@@ -83,7 +78,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[5] == null || !isActiveAndEnabled)
             return;
         tapBoxes[5].TapDown(songPosition);
-        Debug.Log(tapBoxes[5].gameObject.name);
     }
     
     private void RightLane3Started(InputAction.CallbackContext _callbackContext)
@@ -91,7 +85,6 @@ public class PlayerController : MonoBehaviour
         if (tapBoxes[6] == null || !isActiveAndEnabled)
             return;
         tapBoxes[6].TapDown(songPosition);
-        Debug.Log(tapBoxes[6].gameObject.name);
     }
 
 

@@ -16,6 +16,9 @@ public class ScoreController : SerializedScriptableObject
     public IntReference badHits;
     public IntReference combo;
     public FloatReference score;
+    private int maxCombo;
+
+    public int MaxCombo => maxCombo;
 
     public void Init()
     {
@@ -23,6 +26,7 @@ public class ScoreController : SerializedScriptableObject
         okayHits.Value = 0;
         badHits.Value = 0;
         combo.Value = 0;
+        maxCombo = 0;
     }
 
     public void RecordMiss(Note _note)
@@ -41,18 +45,25 @@ public class ScoreController : SerializedScriptableObject
     {
         perfectHits.Value++;
         combo.Value++;
+        UpdateMaxCombo();
     }
     
     public void OkayHit()
     {
         okayHits.Value++;
         combo.Value++;
+        UpdateMaxCombo();
     }
-    
-    public void BadHit()
+
+    private void UpdateMaxCombo()
     {
-        badHits.Value++;
-        combo.Value = 0;
+        if (combo.Value > maxCombo)
+            maxCombo = combo.Value;
+    }
+
+    public Rank GetRank()
+    {
+        return Rank.S;
     }
     
     public void UnInit()
@@ -61,5 +72,6 @@ public class ScoreController : SerializedScriptableObject
         okayHits.Value = 0;
         badHits.Value = 0;
         combo.Value = 0;
+        maxCombo = 0;
     }
 }

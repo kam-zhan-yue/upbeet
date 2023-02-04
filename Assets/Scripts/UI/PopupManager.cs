@@ -13,6 +13,7 @@ public class PopupManager : MonoBehaviour
     [FoldoutGroup("UI Objects")] public MainMenuPopup mainMenuPopup;
     [FoldoutGroup("UI Objects")] public PausePopup pausePopup;
     [FoldoutGroup("UI Objects")] public GamePopup gamePopup;
+    [FoldoutGroup("UI Objects")] public ResultsPopup resultPopup;
     
     private void Awake()
     {
@@ -55,6 +56,12 @@ public class PopupManager : MonoBehaviour
         songController.CloseNotePlayer();
         gamePopup.HidePopup();
         mainMenuPopup.ShowSongSelection();
+    }
+
+    public void ShowResults()
+    {
+        gamePopup.HidePopup();
+        resultPopup.ShowPopup();
     }
 
     private void OnDestroy()
