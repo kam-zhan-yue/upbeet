@@ -15,6 +15,7 @@ public class SongController : MonoBehaviour
 
     public SongPlayer songPlayer;
     public ScoreController scoreController;
+    public NoteFactory noteFactory;
 
     [TableList] 
     public List<NotePlayerEntry> notePlayerPrefabs = new();
@@ -41,7 +42,7 @@ public class SongController : MonoBehaviour
         int lanes = _beatMap.lanes;
         NotePlayer notePlayer = GetPlayer(lanes);
         SetCurrentPlayer(notePlayer);
-        currentNotePlayer.Init(_beatMap);
+        currentNotePlayer.Init(noteFactory, _beatMap);
         scoreController.Init();
     }
 

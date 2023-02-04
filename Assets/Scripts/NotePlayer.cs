@@ -11,12 +11,12 @@ public class NotePlayer : MonoBehaviour
 {
     [BoxGroup("Setup")] public FloatReference songPosition;
     [BoxGroup("Setup")] public IntReference laneLives;
-    [BoxGroup("Setup")] public NoteFactory noteFactory;
     [BoxGroup("Setup")] public List<Lane> laneList = new();
     [BoxGroup("Setup")] public Transform scoreThreshold;
     [BoxGroup("Setup")] public Transform despawnThreshold;
     [BoxGroup("Variables")] public float noteSpeed = 0;
         
+    private NoteFactory noteFactory;
     private BeatMap beatMap;
     public float StartingSecond { get; set; } = 0;
 
@@ -24,8 +24,9 @@ public class NotePlayer : MonoBehaviour
     private List<HoldNote> holdNoteList = new();
     private List<FlickNote> flickNoteList = new();
 
-    public void Init(BeatMap _beatMap)
+    public void Init(NoteFactory _noteFactory, BeatMap _beatMap)
     {
+        noteFactory = _noteFactory;
         beatMap = _beatMap;
         for (int i = 0; i < laneList.Count; ++i)
         {
