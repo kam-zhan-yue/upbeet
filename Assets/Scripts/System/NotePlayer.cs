@@ -101,23 +101,23 @@ public class NotePlayer : MonoBehaviour
         }
     }
     
-    public Note InstantiateNote(NoteType _noteType, Vector3 _position)
+    public Note InstantiateNote(NoteType _noteType, Vector3 _position, Quaternion _rotation)
     {
         switch (_noteType)
         {
             case NoteType.Tap:
                 TapNote tapNote = noteFactory.TapNotePool.Get();
-                tapNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                tapNote.transform.SetPositionAndRotation(_position, _rotation);
                 tapNoteList.Add(tapNote);
                 return tapNote;
             case NoteType.Hold:
                 HoldNote holdNote = noteFactory.HoldNotePool.Get();
-                holdNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                holdNote.transform.SetPositionAndRotation(_position, _rotation);
                 holdNoteList.Add(holdNote);
                 return holdNote;
             case NoteType.Flick:
                 FlickNote flickNote = noteFactory.FlickNotePool.Get();
-                flickNote.transform.SetPositionAndRotation(_position, Quaternion.identity);
+                flickNote.transform.SetPositionAndRotation(_position, _rotation);
                 flickNoteList.Add(flickNote);
                 return flickNote;
             case NoteType.Empty:

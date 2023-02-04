@@ -69,8 +69,10 @@ public class SongController : MonoBehaviour
                 Debug.Log("Game Completed.");
                 gamePlaying.Value = false;
                 ScoreSaveData saveData = scoreController.ProcessResults(currentNotePlayer.BeatMap);
-                saveController.Save(saveData);
-                PopupManager.instance.ShowResults();
+                if(saveController != null)
+                    saveController.Save(saveData);
+                if(PopupManager.instance != null)
+                    PopupManager.instance.ShowResults();
             }
         }
     }

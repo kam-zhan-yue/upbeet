@@ -46,6 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   godMode: 0
+  offscreenDistance:
+    _usage: 1
+    _value: 20
+    _constant: {fileID: 11400000, guid: ee153c1894e502244abc42c96e41fbd7, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   laneBackground: {fileID: 6610452718767484958}
 --- !u!1 &6610452718767484959
 GameObject:

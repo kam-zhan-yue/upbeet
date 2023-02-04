@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
     public bool godMode = false;
+    public FloatReference offscreenDistance = new(20.0f);
     public bool IsPlaying { get; set; }
     public float SecondsIntoTrack { get; set; }
     public bool Dead => lives <= 0;
@@ -13,7 +15,6 @@ public class Lane : MonoBehaviour
     private List<NoteSpawnData> noteSpawnList = new();
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
-    private const float OFFSCREEN_DISTANCE = 10.0f;
     private int nextNoteToSpawn_idx = 0;
     private int lives = 0;
 
@@ -45,7 +46,7 @@ public class Lane : MonoBehaviour
             while (nextNoteToSpawn_idx < noteSpawnList.Count)
             {
                 float distance = notePlayer.noteSpeed * (noteSpawnList[nextNoteToSpawn_idx].position - SecondsIntoTrack);
-                if (distance > OFFSCREEN_DISTANCE)
+                if (distance > offscreenDistance)
                 {
                     break;
                 }
@@ -53,11 +54,13 @@ public class Lane : MonoBehaviour
                 Vector3 spawnPosition = notePlayer.scoreThreshold.position;
 
                 // set x to the lane itself and adjust y to the right distance
-                spawnPosition.x = transform.position.x;
+                Transform transform1 = transform;
+                spawnPosition.x = transform1.position.x;
                 spawnPosition.y += distance;
 
                 // spawn the note using the note player
-                Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition);
+                Quaternion worldRotation = transform1.parent.rotation;
+                Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition, worldRotation);
                 NoteSpawnData spawnData = noteSpawnList[nextNoteToSpawn_idx];
                 if (spawnData.CanSpawn())
                 {
