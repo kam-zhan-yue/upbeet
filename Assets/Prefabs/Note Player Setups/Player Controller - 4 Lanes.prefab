@@ -54,8 +54,8 @@ MonoBehaviour:
     _variableInstancer: {fileID: 0}
   tapBoxes:
   - {fileID: 0}
-  - {fileID: 1288035929261408586}
   - {fileID: 6633463286349353917}
+  - {fileID: 1288035929261408586}
   - {fileID: 0}
   - {fileID: 5976820776350232663}
   - {fileID: 439465861709692003}

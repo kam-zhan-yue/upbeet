@@ -207,6 +207,7 @@ public class NotePlayer : MonoBehaviour
 
     public void Stop()
     {
+        Time.timeScale = 1f;
         for (int i = tapNoteList.Count-1; i >=0; --i)
         {
             tapNoteList[i].UnInit();
