@@ -14,6 +14,13 @@ public class SongController : MonoBehaviour
         public NotePlayer notePlayer;
     }
 
+    [Serializable]
+    public class CharacterEntry
+    {
+        public int lane;
+        public Character character;
+    }
+
     public SongPlayer songPlayer;
     public ScoreController scoreController;
     public NoteFactory noteFactory;
@@ -24,6 +31,7 @@ public class SongController : MonoBehaviour
     [TableList] 
     public List<NotePlayerEntry> notePlayerPrefabs = new();
     private List<NotePlayerEntry> notePlayerList = new();
+    public List<CharacterEntry> characterList = new();
 
     private NotePlayer currentNotePlayer;
 
@@ -49,6 +57,25 @@ public class SongController : MonoBehaviour
         SetCurrentPlayer(notePlayer);
         currentNotePlayer.Init(noteFactory, _beatMap);
         scoreController.Init();
+
+        List<Lane> laneList = currentNotePlayer.laneList;
+        for (int i = 0; i < laneList.Count; ++i)
+        {
+            int laneNumber = i + 1;
+            for (int j = 0; j < characterList.Count; ++j)
+            {
+                if (laneNumber == characterList[i].lane)
+                {
+                    laneList[i].AssignCharacter(characterList[i].character);
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < characterList.Count; ++i)
+        {
+            characterList[i].character.PlayIdle();
+        }
     }
 
     private void SetCurrentPlayer(NotePlayer _notePlayer)
@@ -109,6 +136,11 @@ public class SongController : MonoBehaviour
         currentNotePlayer.Stop();
         scoreController.UnInit();
         gamePlaying.Value = false;
+
+        for (int i = 0; i < characterList.Count; ++i)
+        {
+            characterList[i].character.PlayIdle();
+        }
     }
 
     private NotePlayer GetPlayer(int _lanes)
