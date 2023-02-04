@@ -19,11 +19,18 @@ public abstract class Popup : MonoBehaviour
         InitPopup();
     }
 
-    public abstract void InitPopup();
-    public abstract void ShowPopup();
-    public abstract void HidePopup();
+    protected abstract void InitPopup();
 
+    public virtual void ShowPopup()
+    {
+        isShowing = true;
+    }
 
+    public virtual void HidePopup()
+    {
+        isShowing = false;
+    }
+    
     public virtual void DoneShowing()
     {
         isAnimating = false;

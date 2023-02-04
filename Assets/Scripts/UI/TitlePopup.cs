@@ -14,7 +14,7 @@ public class TitlePopup : Popup
     [FoldoutGroup("Parameters")] public float slideDuration = 0f;
     [FoldoutGroup("Parameters")] public float slideInterval = 0f;
 
-    public override void InitPopup()
+    protected override void InitPopup()
     {
         ResetButtons();
     }
@@ -25,6 +25,7 @@ public class TitlePopup : Popup
         gameObject.SetActiveFast(true);
         ResetButtons();
         Timing.RunCoroutine(SlideButtons());
+        base.ShowPopup();
     }
 
     private void ResetButtons()
@@ -53,5 +54,6 @@ public class TitlePopup : Popup
     {
         Timing.KillCoroutines();
         gameObject.SetActiveFast(false);
+        base.HidePopup();
     }
 }

@@ -9,16 +9,30 @@ public class MainMenuPopup : Popup
     [FoldoutGroup("UI Objects")] public TitlePopup titlePopup;
     [FoldoutGroup("UI Objects")] public SongSelectionPopup songSelectionPopup;
 
-    public override void InitPopup()
+    protected override void InitPopup()
     {
         ShowPopup();
     }
 
     public override void ShowPopup()
     {
-        songSelectionPopup.gameObject.SetActiveFast(false);
-        
+        songSelectionPopup.HidePopup();
         titlePopup.ShowPopup();
+    }
+
+    public void PlayButtonClicked()
+    {
+        titlePopup.HidePopup();
+        songSelectionPopup.ShowPopup();
+    }
+
+    public void BackButtonClicked()
+    {
+        if (songSelectionPopup.isShowing)
+        {
+            songSelectionPopup.HidePopup();
+            titlePopup.ShowPopup();
+        }
     }
 
     public override void HidePopup()

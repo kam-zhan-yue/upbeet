@@ -26,7 +26,7 @@ public class TestingPopup : Popup
     [FoldoutGroup("UI Objects")] public TMP_Text beatText;
     [FoldoutGroup("UI Objects")] public TMP_Text descriptionText;
 
-    public override void InitPopup()
+    protected override void InitPopup()
     {
         dropdown.ClearOptions();
         List<TMP_Dropdown.OptionData> optionList = new();
