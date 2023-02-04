@@ -36,7 +36,7 @@ public class HoldNote : Note
 
     public SpriteRenderer trailSpriteRenderer;
     public float trailAlpha;
-    public const float OFFSET = 0.2f;
+    public const float OFFSET = 0.3f;
     public Transform trailNoteTransform;
     private List<HoldStep> stepList = new();
     private bool heldDown = false;
