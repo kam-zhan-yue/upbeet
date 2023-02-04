@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5805041278008864811}
   - component: {fileID: 3036760929703480270}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8089523963454366931}
   - component: {fileID: 4223764689420023999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7786179574231382195}
   - component: {fileID: 2869998686995187298}
   - component: {fileID: 7038913968759475221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hold Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,8 +218,14 @@ MonoBehaviour:
   scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
   spriteRenderer: {fileID: 4223764689420023999}
   trailSpriteRenderer: {fileID: 3036760929703480270}
+  headTransform: {fileID: 8089523963454366931}
+  originalLocalScale: {x: 2, y: 0.3, z: 1}
   trailAlpha: 100
   trailNoteTransform: {fileID: 5805041278008864811}
+  scaleMultiplierX: 1.1
+  scaleMultiplierY: 3
+  scaleDuration: 0.1
+  ease: 27
 --- !u!61 &7038913968759475221
 BoxCollider2D:
   m_ObjectHideFlags: 0

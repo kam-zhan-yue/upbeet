@@ -20,9 +20,8 @@ public class TapNote : Note
             //Stick it to the score threshold
             Transform transform1 = transform;
             Vector3 position = transform1.position;
-            position.y = scoreThresholdY + HoldNote.OFFSET;
-            //MAGIC NUMBER FTW
-            position.y += 0.2f * scaleMultiplierX;
+            position.y = scoreThresholdY;
+            position.y += HoldNote.OFFSET * scaleMultiplierY / 2;
             transform1.position = position;
         }
         else
