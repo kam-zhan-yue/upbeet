@@ -1510,6 +1510,9 @@ MonoBehaviour:
   badText: {fileID: 246547654}
   comboHolder: {fileID: 468886441163335249}
   comboText: {fileID: 468886440781944482}
+  scaleDuration: 0.12
+  scaleEase: 27
+  stayDuration: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

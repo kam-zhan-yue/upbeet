@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -18,6 +17,10 @@ public class GamePopup : Popup
     [FoldoutGroup("UI Objects")] public RectTransform comboHolder;
     [FoldoutGroup("UI Objects")] public TMP_Text comboText;
     
+    [FoldoutGroup("Parameters")] public float scaleDuration;
+    [FoldoutGroup("Parameters")] public Ease scaleEase;
+    [FoldoutGroup("Parameters")] public float stayDuration;
+
     protected override void InitPopup()
     {
         contentHolder.gameObject.SetActiveFast(false);
@@ -68,7 +71,19 @@ public class GamePopup : Popup
     {
         if (_perfectHits <= 0)
             return;
-        perfectText.gameObject.SetActiveFast(true);
+        
+        ClearSequences();
+        GameObject textObject = perfectText.gameObject;
+        textObject.SetActiveFast(true);
+        textObject.transform.localScale = Vector3.zero;
+        Sequence sequence = DOTween.Sequence();
+        sequence.SetId(1);
+        sequence.Append(textObject.transform.DOScale(Vector3.one, scaleDuration).SetEase(scaleEase));
+        sequence.AppendInterval(stayDuration);
+        sequence.OnComplete(() =>
+        {
+            textObject.gameObject.SetActiveFast(false);
+        });
         okayText.gameObject.SetActiveFast(false);
         badText.gameObject.SetActiveFast(false);
     }
@@ -78,7 +93,19 @@ public class GamePopup : Popup
         if (_okayHits <= 0)
             return;
         perfectText.gameObject.SetActiveFast(false);
-        okayText.gameObject.SetActiveFast(true);
+        
+        ClearSequences();
+        GameObject textObject = okayText.gameObject;
+        textObject.SetActiveFast(true);
+        textObject.transform.localScale = Vector3.zero;
+        Sequence sequence = DOTween.Sequence();
+        sequence.SetId(2);
+        sequence.Append(textObject.transform.DOScale(Vector3.one, scaleDuration).SetEase(scaleEase));
+        sequence.AppendInterval(stayDuration);
+        sequence.OnComplete(() =>
+        {
+            textObject.gameObject.SetActiveFast(false);
+        });
         badText.gameObject.SetActiveFast(false);
     }
 
@@ -88,7 +115,26 @@ public class GamePopup : Popup
             return;
         perfectText.gameObject.SetActiveFast(false);
         okayText.gameObject.SetActiveFast(false);
-        badText.gameObject.SetActiveFast(true);
+        
+        ClearSequences();
+        GameObject textObject = badText.gameObject;
+        textObject.SetActiveFast(true);
+        textObject.transform.localScale = Vector3.zero;
+        Sequence sequence = DOTween.Sequence();
+        sequence.SetId(3);
+        sequence.Append(textObject.transform.DOScale(Vector3.one, scaleDuration).SetEase(scaleEase));
+        sequence.AppendInterval(stayDuration);
+        sequence.OnComplete(() =>
+        {
+            textObject.gameObject.SetActiveFast(false);
+        });
+    }
+
+    private void ClearSequences()
+    {
+        DOTween.Kill(1);
+        DOTween.Kill(2);
+        DOTween.Kill(3);
     }
 
     public override void HidePopup()
