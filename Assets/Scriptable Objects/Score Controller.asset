@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   damageMode: 1
   perfectThreshold: {fileID: 11400000, guid: cc4b5c1374a873b4b990849decdc654d, type: 2}
-  okayThreshold: {fileID: 11400000, guid: 12062f2e790686642a0d156e019f94d0, type: 2}
+  okayThreshold: {fileID: 11400000, guid: 121ca0c2e617a2d47bf830a487b9cb35, type: 2}
   perfectHits:
     _usage: 2
     _value: 0

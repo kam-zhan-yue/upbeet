@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Middle Lane",
+                    "type": "Button",
+                    "id": "8512dc08-e3b6-455e-abf0-9423742f9706",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Right Lane 1",
                     "type": "Button",
                     "id": "49e7f03c-48e7-4ef0-8718-4f40a794a344",
@@ -124,6 +133,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Right Lane 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a1fea70-101f-4272-aad8-fbd1a550e70f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Middle Lane",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

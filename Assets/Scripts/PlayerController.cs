@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public ScoreController scoreController;
     public FloatReference songPosition;
-    public TapBox[] tapBoxes = new TapBox[6];
+    public TapBox[] tapBoxes = new TapBox[7];
     private PlayerControls playerControls;
 
     private void Awake()
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
         playerControls.Player.LeftLane1.started += LeftLane1Started;
         playerControls.Player.LeftLane2.started += LeftLane2Started;
         playerControls.Player.LeftLane3.started += LeftLane3Started;
+        playerControls.Player.MiddleLane.started += MiddleLaneStarted;
         playerControls.Player.RightLane1.started += RightLane1Started;
         playerControls.Player.RightLane2.started += RightLane2Started;
         playerControls.Player.RightLane3.started += RightLane3Started;
@@ -50,23 +51,30 @@ public class PlayerController : MonoBehaviour
         tapBoxes[2].TapDown(songPosition);
     }
 
-    private void RightLane1Started(InputAction.CallbackContext _callbackContext)
+    private void MiddleLaneStarted(InputAction.CallbackContext _callbackContext)
     {
         if (tapBoxes[3] == null)
             return;
         tapBoxes[3].TapDown(songPosition);
     }
 
-    private void RightLane2Started(InputAction.CallbackContext _callbackContext)
+    private void RightLane1Started(InputAction.CallbackContext _callbackContext)
     {
         if (tapBoxes[4] == null)
             return;
         tapBoxes[4].TapDown(songPosition);
     }
-    private void RightLane3Started(InputAction.CallbackContext _callbackContext)
+
+    private void RightLane2Started(InputAction.CallbackContext _callbackContext)
     {
         if (tapBoxes[5] == null)
             return;
         tapBoxes[5].TapDown(songPosition);
+    }
+    private void RightLane3Started(InputAction.CallbackContext _callbackContext)
+    {
+        if (tapBoxes[6] == null)
+            return;
+        tapBoxes[6].TapDown(songPosition);
     }
 }

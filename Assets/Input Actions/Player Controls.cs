@@ -55,6 +55,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Middle Lane"",
+                    ""type"": ""Button"",
+                    ""id"": ""8512dc08-e3b6-455e-abf0-9423742f9706"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Right Lane 1"",
                     ""type"": ""Button"",
                     ""id"": ""49e7f03c-48e7-4ef0-8718-4f40a794a344"",
@@ -148,6 +157,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Right Lane 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a1fea70-101f-4272-aad8-fbd1a550e70f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Middle Lane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -159,6 +179,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_LeftLane1 = m_Player.FindAction("Left Lane 1", throwIfNotFound: true);
         m_Player_LeftLane2 = m_Player.FindAction("Left Lane 2", throwIfNotFound: true);
         m_Player_LeftLane3 = m_Player.FindAction("Left Lane 3", throwIfNotFound: true);
+        m_Player_MiddleLane = m_Player.FindAction("Middle Lane", throwIfNotFound: true);
         m_Player_RightLane1 = m_Player.FindAction("Right Lane 1", throwIfNotFound: true);
         m_Player_RightLane2 = m_Player.FindAction("Right Lane 2", throwIfNotFound: true);
         m_Player_RightLane3 = m_Player.FindAction("Right Lane 3", throwIfNotFound: true);
@@ -224,6 +245,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeftLane1;
     private readonly InputAction m_Player_LeftLane2;
     private readonly InputAction m_Player_LeftLane3;
+    private readonly InputAction m_Player_MiddleLane;
     private readonly InputAction m_Player_RightLane1;
     private readonly InputAction m_Player_RightLane2;
     private readonly InputAction m_Player_RightLane3;
@@ -234,6 +256,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @LeftLane1 => m_Wrapper.m_Player_LeftLane1;
         public InputAction @LeftLane2 => m_Wrapper.m_Player_LeftLane2;
         public InputAction @LeftLane3 => m_Wrapper.m_Player_LeftLane3;
+        public InputAction @MiddleLane => m_Wrapper.m_Player_MiddleLane;
         public InputAction @RightLane1 => m_Wrapper.m_Player_RightLane1;
         public InputAction @RightLane2 => m_Wrapper.m_Player_RightLane2;
         public InputAction @RightLane3 => m_Wrapper.m_Player_RightLane3;
@@ -255,6 +278,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LeftLane3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLane3;
                 @LeftLane3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLane3;
                 @LeftLane3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftLane3;
+                @MiddleLane.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleLane;
+                @MiddleLane.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleLane;
+                @MiddleLane.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleLane;
                 @RightLane1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLane1;
                 @RightLane1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLane1;
                 @RightLane1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightLane1;
@@ -277,6 +303,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @LeftLane3.started += instance.OnLeftLane3;
                 @LeftLane3.performed += instance.OnLeftLane3;
                 @LeftLane3.canceled += instance.OnLeftLane3;
+                @MiddleLane.started += instance.OnMiddleLane;
+                @MiddleLane.performed += instance.OnMiddleLane;
+                @MiddleLane.canceled += instance.OnMiddleLane;
                 @RightLane1.started += instance.OnRightLane1;
                 @RightLane1.performed += instance.OnRightLane1;
                 @RightLane1.canceled += instance.OnRightLane1;
@@ -295,6 +324,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnLeftLane1(InputAction.CallbackContext context);
         void OnLeftLane2(InputAction.CallbackContext context);
         void OnLeftLane3(InputAction.CallbackContext context);
+        void OnMiddleLane(InputAction.CallbackContext context);
         void OnRightLane1(InputAction.CallbackContext context);
         void OnRightLane2(InputAction.CallbackContext context);
         void OnRightLane3(InputAction.CallbackContext context);

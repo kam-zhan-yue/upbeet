@@ -7,18 +7,6 @@ using UnityEngine.Pool;
 
 public class NoteFactory : MonoBehaviour
 {
-    [Serializable]
-    public class InitialisePool
-    {
-        public NoteType noteType;
-        public Note notePrefab = null;
-        public int initialPoolNum = 0;
-        public int maxPoolNum = 0;
-    }
-    
-    [TableList]
-    public List<InitialisePool> initPoolList = new();
-    
     // Collection checks will throw errors if we try to release an item that is already in the pool.
     public bool collectionChecks = true;
     public int defaultCapacity = 0;

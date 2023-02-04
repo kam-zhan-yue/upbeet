@@ -17,8 +17,7 @@ public class NotePlayer : MonoBehaviour
     [BoxGroup("Setup")] public Transform despawnThreshold;
     [BoxGroup("Variables")] public float noteSpeed = 0;
         
-    public BeatMap beatMap;
-
+    private BeatMap beatMap;
     public float StartingSecond { get; set; } = 0;
 
     private List<TapNote> tapNoteList = new();
