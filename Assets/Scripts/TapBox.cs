@@ -15,22 +15,38 @@ public class TapBox : MonoBehaviour
     
     public void TapDown(float _time)
     {
-        // int size = Physics.OverlapBoxNonAlloc(gameObject.transform.position, transform.localScale, hitColliders);
         Transform transform1 = transform;
         int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale, 0f, hitColliders);
         for (int i = 0; i < size; ++i)
         {
-            if(hitColliders[i] != null && hitColliders[i].gameObject.TryGetComponent<TapNote>(out TapNote tapNote))
+            if (hitColliders[i] == null)
+                continue;
+            
+            if(hitColliders[i].gameObject.TryGetComponent(out TapNote tapNote))
             {
-                scoreController.ProcessTapNote(tapNote, _time);
+                tapNote.RecordHit(_time);
                 tapNote.UnInit();
+            }
+            else if (hitColliders[i].gameObject.TryGetComponent(out HoldNote holdNote))
+            {
+                holdNote.RecordHit(_time);
             }
         }
     }
 
     public void TapUp()
     {
-        
+        Transform transform1 = transform;
+        int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale, 0f, hitColliders);
+        for (int i = 0; i < size; ++i)
+        {
+            if (hitColliders[i] == null)
+                continue;
+            if (hitColliders[i].gameObject.TryGetComponent(out HoldNote holdNote))
+            {
+                holdNote.RecordTapUp();
+            }
+        }
     }
 
     private void OnDrawGizmos()

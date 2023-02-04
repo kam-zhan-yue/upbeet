@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using MEC;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class NotePlayer : MonoBehaviour
 {
+    [BoxGroup("Setup")] public FloatReference songPosition;
     [BoxGroup("Setup")] public NoteFactory noteFactory;
     [BoxGroup("Setup")] public List<Lane> laneList = new();
     [BoxGroup("Setup")] public Transform scoreThreshold;
@@ -77,8 +79,16 @@ public class NotePlayer : MonoBehaviour
                 float trailEndPosition = beatMap.GetBeatPositionInSeconds(trailEndBeat);
                 float trailDistance = (trailEndPosition - beatPositionInSeconds) * noteSpeed;
 
-                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, trailDistance, noteSpeed, 
-                    scoreThreshold.position.y, despawnThreshold.position.y);
+                NoteSpawnData.TrailSpawnData trailSpawnData = new()
+                {
+                    trailBeatLength = trailEndBeatLength,
+                    trailEndPosition = trailEndPosition,
+                    trailDistance = trailDistance,
+                    offsetTime = HoldNote.OFFSET / noteSpeed
+                };
+
+                NoteSpawnData spawnData = new(noteType, j, beatPositionInSeconds, trailSpawnData, 
+                    noteSpeed, scoreThreshold.position.y, despawnThreshold.position.y);
                 laneList[i].AddNoteSpawnData(spawnData);
             }
         }
@@ -113,7 +123,17 @@ public class NotePlayer : MonoBehaviour
 
     private void Update()
     {
+        CheckHoldNote();
         CheckCanDespawn();
+    }
+
+    private void CheckHoldNote()
+    {
+        for (int i = holdNoteList.Count - 1; i >= 0; --i)
+        {
+            holdNoteList[i].CheckInitialMiss(songPosition);
+            holdNoteList[i].CheckHold(songPosition);
+        }
     }
 
     private void CheckCanDespawn()

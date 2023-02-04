@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+[CreateAssetMenu(fileName = "New Score Controller", menuName = "Score Controller")]
+public class ScoreController : SerializedScriptableObject
 {
     public FloatConstant perfectThreshold;
+    public FloatConstant okayThreshold;
     public IntReference perfectHits;
     public IntReference okayHits;
     public IntReference badHits;
@@ -20,28 +23,32 @@ public class ScoreController : MonoBehaviour
         combo.Value = 0;
     }
 
-    public void ProcessTapNote(TapNote _note, float _tapTime)
-    {
-        if (!_note.CanHit)
-            return;
-        float tapNoteTime = _note.Position;
-        float difference = Mathf.Abs(tapNoteTime - _tapTime);
-        // Debug.Log("Difference is: "+ difference);
-        if (difference <= perfectThreshold.Value)
-        {
-            perfectHits.Value++;
-        }
-        else
-        {
-            okayHits.Value++;
-        }
-        _note.RecordHit();
-        combo.Value++;
-    }
-
     public void RecordMiss(Note _note)
     {
         _note.RecordMiss();
+        RecordMiss();
+    }
+
+    public void RecordMiss()
+    {
+        badHits.Value++;
+        combo.Value = 0;
+    }
+
+    public void PerfectHit()
+    {
+        perfectHits.Value++;
+        combo.Value++;
+    }
+    
+    public void OkayHit()
+    {
+        okayHits.Value++;
+        combo.Value++;
+    }
+    
+    public void BadHit()
+    {
         badHits.Value++;
         combo.Value = 0;
     }

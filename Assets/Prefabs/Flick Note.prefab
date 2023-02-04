@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581a80ec666e12849831ff1009b6bcf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
 --- !u!1 &8718107602052542887
 GameObject:
   m_ObjectHideFlags: 0

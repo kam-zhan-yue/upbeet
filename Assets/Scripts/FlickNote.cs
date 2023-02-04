@@ -17,4 +17,14 @@ public class FlickNote : Note
     {     
         return transform.position.y <= despawnThresholdY;
     }
+
+    public override void RecordHit(float _tapTime)
+    {
+        base.RecordHit(_tapTime);
+    }
+
+    public override void RecordMiss()
+    {
+        base.RecordMiss();
+    }
 }

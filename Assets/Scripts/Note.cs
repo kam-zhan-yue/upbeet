@@ -3,6 +3,7 @@ using UnityEngine.Pool;
 
 public abstract class Note : MonoBehaviour
 {
+    public ScoreController scoreController;
     private NotePlayer notePlayer;
     private Lane lane;
     private int beat;
@@ -30,12 +31,7 @@ public abstract class Note : MonoBehaviour
         missed = false;
         hit = false;
     }
-
-    public void RecordMiss()
-    {
-        missed = true;
-    }
-
+    
     public virtual void UnInit()
     {
         if(lane != null)
@@ -43,9 +39,14 @@ public abstract class Note : MonoBehaviour
         notePlayer.RemoveNote(this);
     }
 
-    public void RecordHit()
+    public virtual void RecordHit(float _tapTime)
     {
         hit = true;
+    }
+    
+    public virtual void RecordMiss()
+    {
+        missed = true;
     }
 
     public abstract void Move(float _deltaTime);

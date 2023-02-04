@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class NoteSpawnData
 {
+    public class TrailSpawnData
+    {
+        public int trailBeatLength;
+        public float trailEndPosition;
+        public float trailDistance;
+        public float offsetTime;
+    }
     public NoteType noteType;
     public int beat;
     public float position;
-    public float trailDistance;
+    public TrailSpawnData trailSpawnData;
     public float speed = 0f;
     public float scoreThresholdY = 0f;
     public float despawnThresholdY = 0f;
 
-    public NoteSpawnData(NoteType _noteType, int _beat, float _position, float _trailDistance, float _speed, float _scoreThreshold, float _despawnThreshold)
+    public NoteSpawnData(NoteType _noteType, int _beat, float _position, TrailSpawnData _trailSpawnData, float _speed, float _scoreThreshold, float _despawnThreshold)
     {
         noteType = _noteType;
         beat = _beat;
         position = _position;
-        trailDistance = _trailDistance;
+        trailSpawnData = _trailSpawnData;
         speed = _speed;
         scoreThresholdY = _scoreThreshold;
         despawnThresholdY = _despawnThreshold;

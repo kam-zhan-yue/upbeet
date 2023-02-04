@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4cb23df25981547ad61261e943faf1, type: 3}
+  m_Name: Score Controller
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  perfectThreshold: {fileID: 11400000, guid: cc4b5c1374a873b4b990849decdc654d, type: 2}
+  okayThreshold: {fileID: 11400000, guid: 12062f2e790686642a0d156e019f94d0, type: 2}
+  perfectHits:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 70beb142a45482f49a822255495fe2bf, type: 2}
+    _variableInstancer: {fileID: 0}
+  okayHits:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 094e6ee1afb8b6744aec434e5c656a5a, type: 2}
+    _variableInstancer: {fileID: 0}
+  badHits:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 036a803162e656e449bab543c1a821e5, type: 2}
+    _variableInstancer: {fileID: 0}
+  combo:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 3eadb89ec8354b745a997ad57b0965a7, type: 2}
+    _variableInstancer: {fileID: 0}

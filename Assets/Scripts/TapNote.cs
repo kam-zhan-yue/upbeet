@@ -17,4 +17,27 @@ public class TapNote : Note
     {     
         return transform.position.y <= despawnThresholdY;
     }
+
+    public override void RecordHit(float _tapTime)
+    {
+        if (!CanHit)
+            return;
+        base.RecordHit(_tapTime);
+        float noteTime = Position;
+        float difference = Mathf.Abs(noteTime - _tapTime);
+
+        if (difference <= scoreController.perfectThreshold.Value)
+        {
+            scoreController.PerfectHit();
+        }
+        else if(difference <= scoreController.okayThreshold.Value)
+        {
+            scoreController.OkayHit();
+        }
+    }
+
+    public override void RecordMiss()
+    {
+        base.RecordMiss();
+    }
 }

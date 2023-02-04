@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac0fd649d5d02f47bcf5fe6f9c92a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
   trailNoteTransform: {fileID: 5805041278008864811}
 --- !u!61 &7038913968759475221
 BoxCollider2D:

@@ -5,22 +5,68 @@ using UnityEngine.Pool;
 
 public class HoldNote : Note
 {
-    private const float OFFSET = 0.1f;
+    private class HoldStep
+    {
+        private readonly float time = 0f;
+        private bool flag = false;
+
+        public HoldStep(float _time)
+        {
+            time = _time;
+            flag = false;
+        }
+
+        public bool CanCheck(float _songTime)
+        {
+            if (flag)
+                return false;
+            if (_songTime >= time)
+            {
+                flag = true;
+                return true;
+            }
+            return false;
+        }
+
+        public bool Checked()
+        {
+            return flag;
+        }
+    }
+    
+    public const float OFFSET = 0.2f;
     public Transform trailNoteTransform;
+    private List<HoldStep> stepList = new();
+    private bool heldDown = false;
 
     public override void Init(NotePlayer _notePlayer, Lane _lane, NoteSpawnData _spawnData)
     {
         base.Init(_notePlayer, _lane, _spawnData);
         //Set the position to be halfway between the distance and the wave note
         Vector3 localPosition = trailNoteTransform.localPosition;
-        localPosition.y = _spawnData.trailDistance * 0.5f;
+        localPosition.y = _spawnData.trailSpawnData.trailDistance * 0.5f;
         trailNoteTransform.localPosition = localPosition;
         
         //Set the scale to be the length of the distance
         Vector3 localScale = trailNoteTransform.localScale;
-        //Minus offset twice so that it will cover up until the end of the next note
-        localScale.y = _spawnData.trailDistance - OFFSET * 2;
+        //Minus offset so that it will cover up until the end of the next note
+        localScale.y = _spawnData.trailSpawnData.trailDistance - OFFSET;
         trailNoteTransform.localScale = localScale;
+
+        //Add all the hold steps
+        stepList.Clear();
+        float startTime = Position;
+        float endTime = _spawnData.trailSpawnData.trailEndPosition;
+        endTime -= _spawnData.trailSpawnData.offsetTime;
+        int beatLength = _spawnData.trailSpawnData.trailBeatLength;
+        float stepGap = (endTime - startTime) / (beatLength * 2);
+        for (int i = 0; i < beatLength * 2; ++i)
+        {
+            float stepTime = stepGap * (i + 1);
+            stepTime += startTime;
+            HoldStep step = new(stepTime);
+            stepList.Add(step);
+        }
     }
 
     public override void Move(float _deltaTime)
@@ -35,6 +81,7 @@ public class HoldNote : Note
                 Vector3 localPosition = trailNoteTransform.localPosition;
                 localPosition.y -= speed * _deltaTime * 0.5f;
                 trailNoteTransform.localPosition = localPosition;
+                
                 //Reduce the local scale lower and lower
                 Vector3 localScale = trailNoteTransform.localScale;
                 localScale.y -= speed * _deltaTime;
@@ -51,6 +98,27 @@ public class HoldNote : Note
         }
     }
 
+    public void CheckInitialMiss(float _songTime)
+    {
+        float missTime = Position + scoreController.okayThreshold.Value;
+        if(_songTime > missTime)
+            RecordMiss();
+    }
+
+    public void CheckHold(float _songTime)
+    {
+        for (int i = 0; i < stepList.Count; ++i)
+        {
+            if (!stepList[i].CanCheck(_songTime))
+                continue;
+
+            if (heldDown)
+                RecordHold();
+            else
+                scoreController.RecordMiss();
+        }
+    }
+
     private void MoveDown(Transform _transform, float _deltaTime)
     {
         Vector3 position = _transform.position;
@@ -60,7 +128,18 @@ public class HoldNote : Note
     
     public override bool CanDespawn()
     {
-        return ReachedScoreThreshold(transform) && TrailNoteReduced();
+        return ReachedScoreThreshold(transform) && TrailNoteReduced() && AllStepsChecked();
+    }
+
+    private bool AllStepsChecked()
+    {
+        for (int i = 0; i < stepList.Count; ++i)
+        {
+            if (!stepList[i].Checked())
+                return false;
+        }
+
+        return true;
     }
 
     private bool ReachedScoreThreshold(Transform _transform)
@@ -71,5 +150,44 @@ public class HoldNote : Note
     private bool TrailNoteReduced()
     {
         return trailNoteTransform.localScale.y <= 0;
+    }
+
+    public override void RecordHit(float _tapTime)
+    {
+        heldDown = true;
+        if (!CanHit)
+            return;
+        
+        base.RecordHit(_tapTime);
+        float noteTime = Position;
+        float difference = Mathf.Abs(noteTime - _tapTime);
+
+        if (difference <= scoreController.perfectThreshold.Value)
+        {
+            scoreController.PerfectHit();
+        }
+        else if(difference <= scoreController.okayThreshold.Value)
+        {
+            scoreController.OkayHit();
+        }
+    }
+
+    private void RecordHold()
+    {
+        scoreController.PerfectHit();
+    }
+
+    public void RecordTapUp()
+    {
+        heldDown = false;
+    }
+
+    public override void RecordMiss()
+    {
+        if (!Missed && !Hit)
+        {
+            base.RecordMiss();
+            scoreController.RecordMiss();
+        }
     }
 }

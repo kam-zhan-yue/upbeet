@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songPlayer: {fileID: 169839084}
   notePlayer: {fileID: 913677560}
-  scoreController: {fileID: 494578209}
+  scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
 --- !u!1 &200634802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,76 +1236,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385439554}
   m_CullTransparentMesh: 1
---- !u!1 &494578207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 494578208}
-  - component: {fileID: 494578209}
-  m_Layer: 0
-  m_Name: Score Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &494578208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494578207}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1951239722}
-  m_Father: {fileID: 1527714064}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &494578209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494578207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4cb23df25981547ad61261e943faf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  perfectThreshold: {fileID: 11400000, guid: cc4b5c1374a873b4b990849decdc654d, type: 2}
-  perfectHits:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 70beb142a45482f49a822255495fe2bf, type: 2}
-    _variableInstancer: {fileID: 0}
-  okayHits:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 094e6ee1afb8b6744aec434e5c656a5a, type: 2}
-    _variableInstancer: {fileID: 0}
-  badHits:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 036a803162e656e449bab543c1a821e5, type: 2}
-    _variableInstancer: {fileID: 0}
-  combo:
-    _usage: 2
-    _value: 0
-    _constant: {fileID: 0}
-    _variable: {fileID: 11400000, guid: 3eadb89ec8354b745a997ad57b0965a7, type: 2}
-    _variableInstancer: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,6 +2010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020b205cc12134c46834d654fa7de3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  songPosition:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 6ad4b9a3d5f19614d91d3fe74844a023, type: 2}
+    _variableInstancer: {fileID: 0}
   noteFactory: {fileID: 293936072}
   laneList:
   - {fileID: 688659083}
@@ -4082,7 +4018,7 @@ Transform:
   - {fileID: 293936071}
   - {fileID: 222399519}
   - {fileID: 1029834926}
-  - {fileID: 494578208}
+  - {fileID: 1951239722}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4734,8 +4670,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1951239722}
-  - component: {fileID: 1951239724}
   - component: {fileID: 1951239723}
+  - component: {fileID: 1951239724}
   - component: {fileID: 1951239725}
   m_Layer: 0
   m_Name: Miss Collider
@@ -4751,13 +4687,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951239721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -5.25, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 494578208}
-  m_RootOrder: 0
+  m_Father: {fileID: 1527714064}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1951239723
 MonoBehaviour:
@@ -4771,7 +4707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9fe22b9e638544c8d254c12ec6cd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreController: {fileID: 494578209}
+  scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
 --- !u!61 &1951239724
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5215,7 +5151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da26f09d06899a40b9c278d93267d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreController: {fileID: 494578209}
+  scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
   songPosition:
     _usage: 2
     _value: 0
