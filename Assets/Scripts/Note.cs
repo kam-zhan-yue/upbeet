@@ -47,6 +47,8 @@ public abstract class Note : MonoBehaviour
     public virtual void RecordMiss()
     {
         missed = true;
+        if(scoreController.damageMode && lane != null)
+            lane.RemoveLife();
     }
 
     public abstract void Move(float _deltaTime);

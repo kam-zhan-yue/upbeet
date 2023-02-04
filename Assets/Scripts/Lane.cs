@@ -13,10 +13,12 @@ public class Lane : MonoBehaviour
     private NotePlayer notePlayer;
     private const float OFFSCREEN_DISTANCE = 10.0f;
     private int nextNoteToSpawn_idx = 0;
+    private int lives = 0;
 
-    public void Init(NotePlayer _notePlayer)
+    public void Init(NotePlayer _notePlayer, int _lives)
     {
         notePlayer = _notePlayer;
+        lives = _lives;
         ClearNotes();
     }
 
@@ -78,5 +80,16 @@ public class Lane : MonoBehaviour
     public void RemoveNote(Note _note)
     {
         noteList.Remove(_note);
+    }
+
+    public void RemoveLife()
+    {
+        lives--;
+        if (lives <= 0)
+        {
+            for (int i = noteList.Count -1; i >=0; --i)
+                noteList[i].UnInit();
+            ClearNotes();
+        }
     }
 }

@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 public class NotePlayer : MonoBehaviour
 {
     [BoxGroup("Setup")] public FloatReference songPosition;
+    [BoxGroup("Setup")] public IntReference laneLives;
     [BoxGroup("Setup")] public NoteFactory noteFactory;
     [BoxGroup("Setup")] public List<Lane> laneList = new();
     [BoxGroup("Setup")] public Transform scoreThreshold;
@@ -29,7 +30,7 @@ public class NotePlayer : MonoBehaviour
         beatMap = _beatMap;
         for (int i = 0; i < laneList.Count; ++i)
         {
-            laneList[i].Init(this);
+            laneList[i].Init(this, laneLives);
         }
     }
 

@@ -8,6 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Score Controller", menuName = "Score Controller")]
 public class ScoreController : SerializedScriptableObject
 {
+    public bool damageMode = false;
     public FloatConstant perfectThreshold;
     public FloatConstant okayThreshold;
     public IntReference perfectHits;
