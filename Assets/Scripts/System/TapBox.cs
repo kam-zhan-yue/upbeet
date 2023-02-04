@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TapBox : MonoBehaviour
 {
+    public Lane lane;
     public ScoreController scoreController;
     public float localScaleSizeMultiplier = 0.8f;
     private Collider2D[] hitColliders = new Collider2D[10];
@@ -16,6 +17,8 @@ public class TapBox : MonoBehaviour
     
     public void TapDown(float _time)
     {
+        if(lane != null)
+            lane.OnPressDown();
         Transform transform1 = transform;
         int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);
         for (int i = 0; i < size; ++i)
@@ -37,6 +40,8 @@ public class TapBox : MonoBehaviour
 
     public void TapUp()
     {
+        if(lane != null)
+            lane.OnPressUp();
         Transform transform1 = transform;
         int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);
         for (int i = 0; i < size; ++i)

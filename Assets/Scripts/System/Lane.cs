@@ -11,7 +11,9 @@ public class Lane : MonoBehaviour
     public float SecondsIntoTrack { get; set; }
     public bool Dead => lives <= 0;
 
-    public Transform laneBackground;
+    public SpriteRenderer laneBackground;
+    public float idleAlpha = 0f;
+    public float pressedAlpha = 0f;
     private List<NoteSpawnData> noteSpawnList = new();
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
@@ -36,6 +38,20 @@ public class Lane : MonoBehaviour
         noteSpawnList.Add(_spawnData);
     }
 
+    public void OnPressDown()
+    {
+        Color colour = laneBackground.color;
+        colour.a = pressedAlpha / 256f;
+        laneBackground.color = colour;
+    }
+
+    public void OnPressUp()
+    {
+        Color colour = laneBackground.color;
+        colour.a = idleAlpha / 256f;
+        laneBackground.color = colour;
+    }
+    
     private void Update()
     {
         if (IsPlaying)
