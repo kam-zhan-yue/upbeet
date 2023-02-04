@@ -216,6 +216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
+  spriteRenderer: {fileID: 4223764689420023999}
+  trailSpriteRenderer: {fileID: 3036760929703480270}
+  trailAlpha: 100
   trailNoteTransform: {fileID: 5805041278008864811}
 --- !u!61 &7038913968759475221
 BoxCollider2D:

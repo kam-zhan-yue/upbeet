@@ -4,8 +4,9 @@ using UnityEngine.Pool;
 public abstract class Note : MonoBehaviour
 {
     public ScoreController scoreController;
+    public SpriteRenderer spriteRenderer;
     private NotePlayer notePlayer;
-    private Lane lane;
+    protected Lane lane;
     private int beat;
     private float position;
     private bool missed = false;
@@ -31,6 +32,11 @@ public abstract class Note : MonoBehaviour
         despawnThresholdY = _spawnData.despawnThresholdY;
         missed = false;
         hit = false;
+    }
+
+    public virtual void SetColour(Color _colour)
+    {
+        spriteRenderer.color = _colour;
     }
     
     public virtual void UnInit()

@@ -131,9 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
+  spriteRenderer: {fileID: 4207344077606870018}
   scaleMultiplierX: 1.2
   scaleMultiplierY: 4
-  scaleDuration: 0.2
+  scaleDuration: 0.1
   ease: 27
 --- !u!61 &5296494897234263453
 BoxCollider2D:

@@ -33,7 +33,9 @@ public class HoldNote : Note
             return flag;
         }
     }
-    
+
+    public SpriteRenderer trailSpriteRenderer;
+    public float trailAlpha;
     public const float OFFSET = 0.2f;
     public Transform trailNoteTransform;
     private List<HoldStep> stepList = new();
@@ -69,6 +71,14 @@ public class HoldNote : Note
             HoldStep step = new(stepTime);
             stepList.Add(step);
         }
+    }
+
+    public override void SetColour(Color _colour)
+    {
+        base.SetColour(_colour);
+        Color colour = _colour;
+        colour.a = trailAlpha / 256;
+        trailSpriteRenderer.color = colour;
     }
 
     public override void Move(float _deltaTime)
