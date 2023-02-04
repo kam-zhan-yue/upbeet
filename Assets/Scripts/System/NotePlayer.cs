@@ -14,7 +14,7 @@ public class NotePlayer : MonoBehaviour
     [BoxGroup("Setup")] public List<Lane> laneList = new();
     [BoxGroup("Setup")] public Transform scoreThreshold;
     [BoxGroup("Setup")] public Transform despawnThreshold;
-    [BoxGroup("Variables")] public float noteSpeed = 0;
+    [BoxGroup("Variables")] public FloatReference noteSpeed;
         
     private NoteFactory noteFactory;
     private BeatMap beatMap;

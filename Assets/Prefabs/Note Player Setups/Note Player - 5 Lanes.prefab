@@ -67,7 +67,12 @@ MonoBehaviour:
   - {fileID: 5527114893382796341}
   scoreThreshold: {fileID: 6374826788929847523}
   despawnThreshold: {fileID: 1237865385775978203}
-  noteSpeed: 5
+  noteSpeed:
+    _usage: 2
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 3b0b4420709d13b48a47ff100d4c1875, type: 2}
+    _variableInstancer: {fileID: 0}
 --- !u!1001 &937324316940003048
 PrefabInstance:
   m_ObjectHideFlags: 0
