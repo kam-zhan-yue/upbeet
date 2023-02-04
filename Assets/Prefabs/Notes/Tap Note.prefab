@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3189482216388749087}
   - component: {fileID: 4207344077606870018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 368270156508495668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.2, z: 1}
+  m_LocalScale: {x: 2, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2979208041861554438}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2979208041861554438}
   - component: {fileID: 101015561459398769}
   - component: {fileID: 5296494897234263453}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tap Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,9 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
+  spriteRenderer: {fileID: 4207344077606870018}
   scaleMultiplierX: 1.2
   scaleMultiplierY: 4
-  scaleDuration: 0.2
+  scaleDuration: 0.1
   ease: 27
 --- !u!61 &5296494897234263453
 BoxCollider2D:
@@ -159,5 +160,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.2}
+  m_Size: {x: 2, y: 0.3}
   m_EdgeRadius: 0

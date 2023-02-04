@@ -33,6 +33,7 @@ public class ScoreController : SerializedScriptableObject
         badHits.Value = 0;
         combo.Value = 0;
         maxCombo = 0;
+        score.Value = 0;
         rank = Rank.C;
     }
 
@@ -139,6 +140,7 @@ public class ScoreController : SerializedScriptableObject
         badHits.Value = 0;
         combo.Value = 0;
         maxCombo = 0;
+        score.Value = 0;
         rank = Rank.C;
     }
 }

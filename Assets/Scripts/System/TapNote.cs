@@ -65,6 +65,7 @@ public class TapNote : Note
         sequence.Append(transform1.DOScale(newLocalScale, scaleDuration)).SetEase(ease);
         sequence.OnComplete(() =>
         {
+            lane.PlayTapParticles();
             base.UnInit();
             transform1.localScale = originalLocalScale;
         });
