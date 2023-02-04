@@ -49,8 +49,10 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: 3eadb89ec8354b745a997ad57b0965a7, type: 2}
     _variableInstancer: {fileID: 0}
   score:
-    _usage: 0
+    _usage: 2
     _value: 0
     _constant: {fileID: 0}
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 303cff80377f77a48b92e9921c3379f9, type: 2}
     _variableInstancer: {fileID: 0}
+  basePoints: 300
+  incrementAmount: 100

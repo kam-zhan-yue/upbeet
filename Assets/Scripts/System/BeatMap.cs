@@ -1,3 +1,4 @@
+using System;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEditor;
@@ -21,6 +22,12 @@ public class BeatMap : SerializedScriptableObject
     
     //Logic Variables
     public float SecPerBeat => 60f / (songBpm * hitsPerBeat);
+
+    [NonSerialized, ShowInInspector, ReadOnly]
+    private float totalPossibleScore = 0f;
+
+    [NonSerialized, ShowInInspector, ReadOnly]
+    private int totalPossibleBeats = 0;
     
     //Beat Map Variables
     [PropertyOrder(20)]
@@ -134,6 +141,51 @@ public class BeatMap : SerializedScriptableObject
 
     public float GetTotalPossibleScore()
     {
-        return 1000f;
+        return totalPossibleScore;
+    }
+
+    private void OnValidate()
+    {
+        CalculatePointsAndBeats();
+    }
+
+    private void CalculatePointsAndBeats()
+    {
+        totalPossibleBeats = 0;
+        totalPossibleScore = 0f;
+        int laneNum = GetTotalLanes();
+        int beatNum = GetTotalBeats();
+        for (int i = 0; i < laneNum; ++i)
+        {
+            for (int j = 0; j < beatNum; ++j)
+            {
+                NoteType noteType = GetNoteType(i, j);
+                if (noteType is NoteType.Empty or NoteType.HoldTrail or NoteType.Flick)
+                    continue;
+                int trailBeatEndLength = GetEndTrailBeatLength(i, j);
+                if (trailBeatEndLength > 0)
+                {
+                    int trailBeatNum = trailBeatEndLength * 2 - 1;
+                    totalPossibleBeats += trailBeatNum;
+                }
+                totalPossibleBeats++;
+            }
+        }
+
+        float basePoints = 300;
+        float incrementAmount = 100;
+        int incrementStep = 10;
+        int maxIncrements = 10;
+        int increments = 0;
+        
+        for (int i = 0; i < totalPossibleBeats; ++i)
+        {
+            if (i > 0 && i % incrementStep == 0 && increments < maxIncrements)
+                increments++;
+            totalPossibleScore += basePoints + incrementAmount * increments;
+        }
+
+        //Factor in the perfect modifier
+        totalPossibleScore *= 2f;
     }
 }
