@@ -36,6 +36,7 @@ public class SongPlayer : MonoBehaviour
 
     public int CurrentBeat => currentBeat;
     public float SongPositionInBeats => songPositionInBeats;
+    public bool NotPlayingAndNotPaused => !audioSource.isPlaying && !paused;
 
     [FoldoutGroup("Editor Functions")]
     [Button]

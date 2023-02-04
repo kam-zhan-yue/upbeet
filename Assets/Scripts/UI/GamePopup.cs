@@ -53,8 +53,15 @@ public class GamePopup : Popup
         int combo = scoreController.combo;
         if (combo > 0)
         {
+            DOTween.Kill(0);
             comboHolder.gameObject.SetActiveFast(true);
             comboText.text = combo.ToString();
+            GameObject comboObject = comboText.gameObject;
+            comboObject.SetActiveFast(true);
+            comboObject.transform.localScale = Vector3.zero;
+            Sequence sequence = DOTween.Sequence();
+            sequence.SetId(0);
+            sequence.Append(comboObject.transform.DOScale(Vector3.one, scaleDuration).SetEase(scaleEase));
         }
         else
         {

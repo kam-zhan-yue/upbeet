@@ -55,11 +55,15 @@ public class ResultsPopup : Popup
     public void RestartButtonClicked()
     {
         PopupManager.instance.RestartButtonClicked();
+        contentHolder.gameObject.SetActiveFast(false);
+        HidePopup();
     }
 
     public void ExitButtonClicked()
     {
         PopupManager.instance.ExitButtonClicked();
+        contentHolder.gameObject.SetActiveFast(false);
+        HidePopup();
     }
     
     public override void HidePopup()

@@ -48,6 +48,7 @@ public class PopupManager : MonoBehaviour
     public void RestartButtonClicked()
     {
         songController.Restart();
+        gamePopup.ShowPopup();
     }
 
     public void ExitButtonClicked()

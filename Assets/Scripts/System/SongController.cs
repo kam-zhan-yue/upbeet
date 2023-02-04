@@ -17,6 +17,7 @@ public class SongController : MonoBehaviour
     public SongPlayer songPlayer;
     public ScoreController scoreController;
     public NoteFactory noteFactory;
+    public SaveController saveController;
 
     public BoolReference gamePlaying;
 
@@ -57,7 +58,23 @@ public class SongController : MonoBehaviour
         currentNotePlayer = _notePlayer;
         currentNotePlayer.gameObject.SetActiveFast(true);
     }
-    
+
+    private void Update()
+    {
+        if (gamePlaying)
+        {
+            //If game is going on, but not audio and no pause, then report game completed
+            if (songPlayer.NotPlayingAndNotPaused)
+            {
+                Debug.Log("Game Completed.");
+                gamePlaying.Value = false;
+                ScoreSaveData saveData = scoreController.ProcessResults(currentNotePlayer.BeatMap);
+                saveController.Save(saveData);
+                PopupManager.instance.ShowResults();
+            }
+        }
+    }
+
     public void Play(int _beat = 0)
     {
         songPlayer.Play(_beat);

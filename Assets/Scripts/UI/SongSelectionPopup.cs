@@ -9,6 +9,7 @@ public class SongSelectionPopup : Popup
     
     [FoldoutGroup("UI Objects")] public RectTransform selectionHolder;
     [FoldoutGroup("UI Objects")] public SelectionPopupItem selectionPopupItemSample;
+    [FoldoutGroup("UI Objects")] public SelectionDetailPopupItem detailPopupItem;
 
     private List<SelectionPopupItem> selectionList = new();
 
@@ -42,9 +43,31 @@ public class SongSelectionPopup : Popup
                 selectionList[i].gameObject.SetActiveFast(false);
             }
         }
+        detailPopupItem.gameObject.SetActiveFast(false);
         base.ShowPopup();
     }
 
+    public void ShowDetail(BeatMap _beatMap)
+    {
+        if(beatMapDatabase.TryGetSave(_beatMap, out ScoreSaveData saveData))
+        {
+            UIRecord record = new (saveData);
+            detailPopupItem.Init(record);
+            detailPopupItem.Show();
+        }
+        else
+        {
+            UIRecord record = new(_beatMap.name);
+            detailPopupItem.Init(record);
+            detailPopupItem.Show();
+        }
+    }
+
+    public void HideDetail()
+    {
+        detailPopupItem.Hide();
+    }
+    
     public override void HidePopup()
     {
         gameObject.SetActiveFast(false);

@@ -131,4 +131,9 @@ public class BeatMap : SerializedScriptableObject
     {
         return beatMap.GetUpperBound(1) + 1;
     }
+
+    public float GetTotalPossibleScore()
+    {
+        return 1000f;
+    }
 }
