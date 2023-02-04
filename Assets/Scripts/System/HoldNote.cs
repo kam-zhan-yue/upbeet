@@ -117,7 +117,11 @@ public class HoldNote : Note
             if (heldDown)
                 RecordHold();
             else
+            {
+                //Don't bother with the hit and miss checking. This is for sure miss area
+                base.RecordMiss();
                 scoreController.RecordMiss();
+            }
         }
     }
 

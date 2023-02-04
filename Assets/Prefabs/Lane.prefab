@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d0c3df9623164799f20f5fc152d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 1
+  godMode: 0
   laneBackground: {fileID: 6610452718767484958}
 --- !u!1 &6610452718767484959
 GameObject:

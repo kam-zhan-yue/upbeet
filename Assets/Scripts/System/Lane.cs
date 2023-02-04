@@ -91,6 +91,7 @@ public class Lane : MonoBehaviour
     {
         if (godMode)
             return;
+        Debug.Log("Remove Life");
         lives--;
         if (lives <= 0)
         {

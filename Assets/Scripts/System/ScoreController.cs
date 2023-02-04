@@ -55,7 +55,6 @@ public class ScoreController : SerializedScriptableObject
         UpdateMaxCombo();
         float noteScore = GetNoteScore(Grade.Perfect, combo.Value, NoteType.Tap);
         score.Value += noteScore;
-        Debug.Log("Score: "+score.Value+" Note: "+noteScore);
     }
     
     public void OkayHit()
@@ -65,7 +64,6 @@ public class ScoreController : SerializedScriptableObject
         UpdateMaxCombo();
         float noteScore = GetNoteScore(Grade.Okay, combo.Value, NoteType.Tap);
         score.Value += noteScore;
-        Debug.Log("Score: "+score.Value+" Note: "+noteScore);
     }
 
     private void UpdateMaxCombo()

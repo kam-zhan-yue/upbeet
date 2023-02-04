@@ -232,6 +232,7 @@ public class NotePlayer : MonoBehaviour
 
     public void ReportLaneDead(Lane _lane)
     {
+        Debug.Log($"{_lane.name} dead");
         List<NoteSpawnData> spawnList = _lane.GetSpawnList();
         List<int> aliveLanes = new();
         for (int i = 0; i < laneList.Count; ++i)
