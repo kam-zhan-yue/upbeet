@@ -25,12 +25,18 @@ public class Lane : MonoBehaviour
     private NotePlayer notePlayer;
     private int nextNoteToSpawn_idx = 0;
     private int lives = 0;
+    private Character character;
 
     public void Init(NotePlayer _notePlayer, int _lives)
     {
         notePlayer = _notePlayer;
         lives = _lives;
         ClearNotes();
+    }
+
+    public void AssignCharacter(Character _character)
+    {
+        character = _character;
     }
 
     private void ClearNotes()
@@ -159,6 +165,8 @@ public class Lane : MonoBehaviour
         if (tapParticles == null)
             return;
         tapParticles.Play();
+        if(character != null)
+            character.PlayTap();
     }
 
     public void PlayHoldParticles()
@@ -166,7 +174,8 @@ public class Lane : MonoBehaviour
         if (holdParticles == null)
             return;
         holdParticles.Play();
-        Debug.Log("Play "+holdParticles.name);
+        if(character != null)
+            character.PlayHold();
     }
 
     public void StopHoldParticles()
@@ -174,7 +183,8 @@ public class Lane : MonoBehaviour
         if (holdParticles == null)
             return;
         holdParticles.Stop();
-        Debug.Log("Stop "+holdParticles.name);
+        if(character != null)
+            character.PlayIdle();
     }
 
     public List<NoteSpawnData> GetSpawnList()
