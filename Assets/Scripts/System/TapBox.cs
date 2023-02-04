@@ -6,6 +6,7 @@ using UnityEngine;
 public class TapBox : MonoBehaviour
 {
     public ScoreController scoreController;
+    public float localScaleSizeMultiplier = 0.8f;
     private Collider2D[] hitColliders = new Collider2D[10];
 
     public void Init(ScoreController _scoreController)
@@ -16,7 +17,7 @@ public class TapBox : MonoBehaviour
     public void TapDown(float _time)
     {
         Transform transform1 = transform;
-        int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale, 0f, hitColliders);
+        int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);
         for (int i = 0; i < size; ++i)
         {
             if (hitColliders[i] == null)
@@ -37,7 +38,7 @@ public class TapBox : MonoBehaviour
     public void TapUp()
     {
         Transform transform1 = transform;
-        int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale, 0f, hitColliders);
+        int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);
         for (int i = 0; i < size; ++i)
         {
             if (hitColliders[i] == null)
@@ -53,7 +54,7 @@ public class TapBox : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Vector3 position = gameObject.transform.position;
-        Gizmos.DrawWireCube(position, transform.localScale);
+        Gizmos.DrawWireCube(position, transform.localScale * localScaleSizeMultiplier);
         // to visualize t$$anonymous$$s:
         // Physics.OverlapBox(pos, scale, rotation, ...)
     }

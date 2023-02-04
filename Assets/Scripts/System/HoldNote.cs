@@ -60,7 +60,9 @@ public class HoldNote : Note
         endTime -= _spawnData.trailSpawnData.offsetTime;
         int beatLength = _spawnData.trailSpawnData.trailBeatLength;
         float stepGap = (endTime - startTime) / (beatLength * 2);
-        for (int i = 0; i < beatLength * 2; ++i)
+        //Minus one so that the last step is removed because it is too hard otherwise
+        //So if there are 3 beat lengths in the trail, the note potential is 5
+        for (int i = 0; i < beatLength * 2 - 1; ++i)
         {
             float stepTime = stepGap * (i + 1);
             stepTime += startTime;

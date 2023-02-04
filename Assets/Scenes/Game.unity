@@ -1512,7 +1512,7 @@ MonoBehaviour:
   comboText: {fileID: 468886440781944482}
   scaleDuration: 0.12
   scaleEase: 27
-  stayDuration: 0
+  stayDuration: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
