@@ -9,7 +9,9 @@ public class Lane : MonoBehaviour
     public FloatReference offscreenDistance = new(20.0f);
     public ParticleSystem tapParticles;
     public ParticleSystem holdParticles;
+    public bool useGradient = false;
     public Gradient noteGradient;
+    public Color noteColour;
     
     public bool IsPlaying { get; set; }
     public float SecondsIntoTrack { get; set; }
@@ -85,11 +87,15 @@ public class Lane : MonoBehaviour
                 if (spawnData.CanSpawn())
                 {
                     note.Init(notePlayer, this, spawnData);
-                    if (noteGradient != null)
+                    if (useGradient && noteGradient != null)
                     {
                         float random = Random.Range(0f, 1f);
                         Color randomColour = noteGradient.Evaluate(random);
                         note.SetColour(randomColour);
+                    }
+                    else
+                    {
+                        note.SetColour(noteColour);
                     }
                     noteList.Add(note);
                 }

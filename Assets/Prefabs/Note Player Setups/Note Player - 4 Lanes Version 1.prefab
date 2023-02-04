@@ -381,6 +381,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 3868248334426132710, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248334426132710, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248334426132710, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.84313726
+      objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426849, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_Name
       value: Lane 2 - Garlic
@@ -392,6 +404,22 @@ PrefabInstance:
     - target: {fileID: 3868248336438426850, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -441,6 +469,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 4522890201285957662, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.47843137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201285957662, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.35686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201285957662, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.70980394
+      objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282009, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_Name
       value: Lane 4 - Beet
@@ -456,6 +496,22 @@ PrefabInstance:
     - target: {fileID: 4522890201418282010, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -496,6 +552,22 @@ PrefabInstance:
     - target: {fileID: 5383459541754070128, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -545,6 +617,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 5383459542156666999, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459542156666999, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.34901962
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459542156666999, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.85490197
+      objectReference: {fileID: 0}
     - target: {fileID: 7120852481262657806, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1
@@ -565,6 +649,18 @@ PrefabInstance:
       propertyPath: lane
       value: 
       objectReference: {fileID: 2363436121661162663}
+    - target: {fileID: 8741006278911791320, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006278911791320, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.45882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006278911791320, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7529412
+      objectReference: {fileID: 0}
     - target: {fileID: 8741006278911791323, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -576,6 +672,22 @@ PrefabInstance:
     - target: {fileID: 8741006280117730524, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: noteColour.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
