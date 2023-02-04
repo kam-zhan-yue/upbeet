@@ -35,7 +35,7 @@ public class SongSelectionPopup : Popup
             if (i < beatMapDatabase.beatMapList.Count)
             {
                 selectionList[i].gameObject.SetActiveFast(true);
-                selectionList[i].Init(this, beatMapDatabase.beatMapList[i]);
+                selectionList[i].Init(beatMapDatabase.beatMapList[i]);
             }
             else
             {
@@ -43,11 +43,6 @@ public class SongSelectionPopup : Popup
             }
         }
         base.ShowPopup();
-    }
-
-    public void SongClicked(BeatMap _beatMap)
-    {
-        Debug.Log("Play: "+_beatMap.name);
     }
 
     public override void HidePopup()

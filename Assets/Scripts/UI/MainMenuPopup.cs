@@ -22,8 +22,7 @@ public class MainMenuPopup : Popup
 
     public void PlayButtonClicked()
     {
-        titlePopup.HidePopup();
-        songSelectionPopup.ShowPopup();
+        ShowSongSelection();
     }
 
     public void BackButtonClicked()
@@ -33,6 +32,12 @@ public class MainMenuPopup : Popup
             songSelectionPopup.HidePopup();
             titlePopup.ShowPopup();
         }
+    }
+
+    public void ShowSongSelection()
+    {
+        titlePopup.HidePopup();
+        songSelectionPopup.ShowPopup();
     }
 
     public override void HidePopup()

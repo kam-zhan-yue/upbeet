@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class SongController : MonoBehaviour
@@ -16,6 +17,8 @@ public class SongController : MonoBehaviour
     public SongPlayer songPlayer;
     public ScoreController scoreController;
     public NoteFactory noteFactory;
+
+    public BoolReference gamePlaying;
 
     [TableList] 
     public List<NotePlayerEntry> notePlayerPrefabs = new();
@@ -34,6 +37,7 @@ public class SongController : MonoBehaviour
             notePlayerList.Add(entry);
             player.gameObject.SetActiveFast(false);
         }
+        gamePlaying.Value = false;
     }
 
     public void Init(BeatMap _beatMap)
@@ -58,6 +62,7 @@ public class SongController : MonoBehaviour
     {
         songPlayer.Play(_beat);
         currentNotePlayer.Play(_beat);
+        gamePlaying.Value = true;
     }
 
     public void Pause()
@@ -72,11 +77,18 @@ public class SongController : MonoBehaviour
         currentNotePlayer.Resume();
     }
 
+    public void Restart()
+    {
+        Stop();
+        Play();
+    }
+
     public void Stop()
     {
         songPlayer.Stop();
         currentNotePlayer.Stop();
         scoreController.UnInit();
+        gamePlaying.Value = false;
     }
 
     private NotePlayer GetPlayer(int _lanes)
@@ -96,5 +108,10 @@ public class SongController : MonoBehaviour
         }
         Debug.LogError("No note player with sufficient lanes!");
         return null;
+    }
+
+    public void CloseNotePlayer()
+    {
+        currentNotePlayer.gameObject.SetActiveFast(false);
     }
 }
