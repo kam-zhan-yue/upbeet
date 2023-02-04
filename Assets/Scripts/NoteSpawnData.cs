@@ -29,4 +29,21 @@ public class NoteSpawnData
         scoreThresholdY = _scoreThreshold;
         despawnThresholdY = _despawnThreshold;
     }
+
+    private NoteSpawnData() { }
+
+    public static NoteSpawnData GetHoldTrailData(int _beat)
+    {
+        NoteSpawnData trailSpawn = new()
+        {
+            noteType = NoteType.HoldTrail,
+            beat = _beat
+        };
+        return trailSpawn;
+    }
+
+    public bool CanSpawn()
+    {
+        return noteType != NoteType.Empty && noteType != NoteType.HoldTrail;
+    }
 }

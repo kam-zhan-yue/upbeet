@@ -15,6 +15,7 @@ public abstract class Note : MonoBehaviour
     protected float despawnThresholdY = 0f;
     public bool Missed => missed;
     public bool Hit => hit;
+    public int Beat => beat;
     public bool CanHit => !missed && !hit;
 
     public float Position => position;

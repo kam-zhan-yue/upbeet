@@ -65,8 +65,13 @@ public class NotePlayer : MonoBehaviour
             {
                 //Skip if the note is empty
                 NoteType noteType = beatMap.GetNoteType(i, j);
-                if (noteType is NoteType.Empty or NoteType.HoldTrail)
+                if (noteType is NoteType.Empty)
                     continue;
+                if (noteType is NoteType.HoldTrail)
+                {
+                    laneList[i].AddNoteSpawnData(NoteSpawnData.GetHoldTrailData(j));
+                    continue;
+                }
                 
                 float beatPositionInSeconds = beatMap.GetBeatPositionInSeconds(j);
                 
@@ -220,6 +225,42 @@ public class NotePlayer : MonoBehaviour
         foreach (Lane lane in laneList)
         {
             lane.IsPlaying = false;
+        }
+    }
+
+    public void ReportLaneDead(Lane _lane)
+    {
+        List<NoteSpawnData> spawnList = _lane.GetSpawnList();
+        List<int> aliveLanes = new();
+        for (int i = 0; i < laneList.Count; ++i)
+        {
+            if (!laneList[i].Dead)
+                aliveLanes.Add(i);
+        }
+
+        if (aliveLanes.Count <= 0)
+        {
+            //Report game over
+            return;
+        }
+
+        System.Random rng = new();
+        for (int i = 0; i < spawnList.Count; ++i)
+        {
+            //Shuffle for a random order of alive lanes to check
+            rng.Shuffle(aliveLanes);
+            NoteSpawnData spawnData = spawnList[i];
+            for (int j = 0; j < aliveLanes.Count; ++j)
+            {
+                Lane currentLane = laneList[aliveLanes[j]];
+                if (currentLane.TryAddSpawnData(spawnData))
+                    break;
+            }
+        }
+
+        for (int i = 0; i < aliveLanes.Count; ++i)
+        {
+            laneList[aliveLanes[i]].SortSpawnData();
         }
     }
 }

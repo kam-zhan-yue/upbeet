@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
+    public bool godMode = false;
     public bool IsPlaying { get; set; }
     public float SecondsIntoTrack { get; set; }
+    public bool Dead => lives <= 0;
 
     public Transform laneBackground;
     private List<NoteSpawnData> noteSpawnList = new();
@@ -57,8 +59,11 @@ public class Lane : MonoBehaviour
                 // spawn the note using the note player
                 Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition);
                 NoteSpawnData spawnData = noteSpawnList[nextNoteToSpawn_idx];
-                note.Init(notePlayer, this, spawnData);
-                noteList.Add(note);
+                if (spawnData.CanSpawn())
+                {
+                    note.Init(notePlayer, this, spawnData);
+                    noteList.Add(note);
+                }
 
                 // now check the next note
                 nextNoteToSpawn_idx++;
@@ -84,12 +89,94 @@ public class Lane : MonoBehaviour
 
     public void RemoveLife()
     {
+        if (godMode)
+            return;
         lives--;
         if (lives <= 0)
         {
-            for (int i = noteList.Count -1; i >=0; --i)
+            for (int i = noteList.Count - 1; i >= 0; --i)
+            {
+                //Remove all active notes from the spawn list before giving it
+                //to other lanes
+                RemoveSpawnData(noteList[i].Beat);
                 noteList[i].UnInit();
+            }
+            notePlayer.ReportLaneDead(this);
             ClearNotes();
         }
+    }
+
+    private void RemoveSpawnData(int _beat)
+    {
+        for (int i = noteSpawnList.Count -1 ; i >= 0; --i)
+        {
+            if (noteSpawnList[i].beat == _beat)
+            {
+                noteSpawnList.RemoveAt(i);
+                break;
+            }
+        }
+    }
+
+    public List<NoteSpawnData> GetSpawnList()
+    {
+        return noteSpawnList;
+    }
+
+    public bool TryAddSpawnData(NoteSpawnData _spawnData)
+    {
+        NoteType noteType = _spawnData.noteType;
+        //Don't add hold trails, unless processing a regular hold note
+        if (noteType == NoteType.HoldTrail)
+            return false;
+        
+        //For tap notes, the trail length is 1, so need to offset by a positive 1
+        for (int i = 0; i < _spawnData.trailSpawnData.trailBeatLength + 1; ++i)
+        {
+            int beatToCheck = _spawnData.beat - i;
+            //If there is another note at this beat, then cannot add
+            if (IsBeatBusy(beatToCheck))
+                return false;
+        }
+        
+        Debug.Log($"{gameObject.name} Adding {noteType} at {_spawnData.beat} with trail {_spawnData.trailSpawnData.trailBeatLength}");
+        noteSpawnList.Add(_spawnData);
+        for (int i = 0; i < _spawnData.trailSpawnData.trailBeatLength; ++i)
+        {
+            int beatToInsert = _spawnData.beat - (i+1);
+            noteSpawnList.Add(NoteSpawnData.GetHoldTrailData(beatToInsert));
+            Debug.Log($"{gameObject.name} Adding trail at {beatToInsert}");
+        }
+        
+        return true;
+    }
+
+    private bool IsBeatBusy(int _beat)
+    {
+        for (int i = 0; i < noteSpawnList.Count; ++i)
+        {
+            if (noteSpawnList[i].beat == _beat)
+                return true;
+        }
+        return false;
+    }
+
+    public void SortSpawnData()
+    {
+        SpawnComparer spawnComparer = new();
+        noteSpawnList.Sort(spawnComparer);
+    }
+}
+
+public class SpawnComparer : IComparer<NoteSpawnData>
+{
+    public int Compare(NoteSpawnData _x, NoteSpawnData _y)
+    {
+        if (_y != null && _x != null)
+        {
+            int beatComparison = _y.beat.CompareTo(_x.beat);
+            if (beatComparison != 0) return beatComparison;
+        }
+        return 0;
     }
 }
