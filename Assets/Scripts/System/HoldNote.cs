@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -35,11 +36,20 @@ public class HoldNote : Note
     }
 
     public SpriteRenderer trailSpriteRenderer;
+    public Transform headTransform;
+    public Vector3 originalLocalScale;
     public float trailAlpha;
-    public const float OFFSET = 0.3f;
     public Transform trailNoteTransform;
+    public const float OFFSET = 0.3f;
+    public float scaleMultiplierX;
+    public float scaleMultiplierY;
+    public float scaleDuration;
+    public Ease ease;
     private List<HoldStep> stepList = new();
     private bool heldDown = false;
+
+    private bool playingParticles = false;
+    // private bool sequencePlaying = false;
 
     public override void Init(NotePlayer _notePlayer, Lane _lane, NoteSpawnData _spawnData)
     {
@@ -71,6 +81,12 @@ public class HoldNote : Note
             HoldStep step = new(stepTime);
             stepList.Add(step);
         }
+
+        heldDown = false;
+        playingParticles = false;
+
+        // headTransform.localScale = originalLocalScale;
+        // headTransform.localPosition = Vector3.zero;
     }
 
     public override void SetColour(Color _colour)
@@ -98,6 +114,44 @@ public class HoldNote : Note
                 Vector3 localScale = trailNoteTransform.localScale;
                 localScale.y -= speed * _deltaTime;
                 trailNoteTransform.localScale = localScale;
+                if (heldDown)
+                {
+                    if (!playingParticles)
+                    {
+                        lane.PlayHoldParticles();
+                        playingParticles = true;
+                    }
+                }
+                else
+                {
+                    if (playingParticles)
+                    {
+                        lane.StopHoldParticles();
+                        playingParticles = false;
+                    }
+                }
+                //
+                // if (heldDown)
+                // {
+                //     Vector3 headScale = headTransform.localScale;
+                //     headScale.x = originalLocalScale.x * scaleMultiplierX;
+                //     headScale.y = originalLocalScale.y * scaleMultiplierY;
+                //     headTransform.localScale = headScale;
+                //     
+                //     //Stick it to the score threshold
+                //     Vector3 position = headTransform.position;
+                //     position.y = scoreThresholdY;
+                //     position.y += OFFSET * scaleMultiplierY / 2;
+                //     headTransform.position = position;
+                // }
+                // else
+                // {
+                //     headTransform.localScale = originalLocalScale;
+                //     Vector3 position = headTransform.position;
+                //     position.y = scoreThresholdY;
+                //     position.y += OFFSET / 2;
+                //     headTransform.position = position;
+                // }
             }
             else
             {
@@ -133,6 +187,39 @@ public class HoldNote : Note
                 scoreController.RecordMiss();
             }
         }
+
+        // if (heldDown)
+        // {
+        //     if (!sequencePlaying)
+        //     {
+        //         // Transform transform1 = headTransform;
+        //         // Vector3 originalScale = transform1.localScale;
+        //         // Vector3 newLocalScale = originalScale;
+        //         // newLocalScale.x *= scaleMultiplierX;
+        //         // newLocalScale.y *= scaleMultiplierY;
+        //         //
+        //         // Sequence sequence = DOTween.Sequence();
+        //         // sequence.SetId(10);
+        //         // sequence.Append(transform1.DOScale(newLocalScale, scaleDuration)).SetEase(ease).SetLoops(-1, LoopType.Yoyo);
+        //         // lane.PlayHoldParticles();
+        //         Transform transform1 = headTransform;
+        //         Vector3 localScale = transform1.localScale;
+        //         localScale.x *= scaleMultiplierX;
+        //         localScale.y *= scaleMultiplierY;
+        //         transform1.localScale = localScale;
+        //         sequencePlaying = true;
+        //     }
+        // }
+        // else
+        // {
+        //     if (sequencePlaying)
+        //     {
+        //         headTransform.localScale = originalLocalScale;
+        //         DOTween.Kill(10);
+        //         lane.StopHoldParticles();
+        //         sequencePlaying = false;
+        //     }
+        // }
     }
 
     private void MoveDown(Transform _transform, float _deltaTime)
@@ -160,7 +247,7 @@ public class HoldNote : Note
 
     private bool ReachedScoreThreshold(Transform _transform)
     {
-        return _transform.position.y <= scoreThresholdY + OFFSET;
+        return _transform.position.y <= scoreThresholdY + OFFSET / 2;
     }
 
     private bool TrailNoteReduced()
@@ -206,4 +293,11 @@ public class HoldNote : Note
             scoreController.RecordMiss();
         }
     }
+
+    public override void UnInit()
+    {
+        lane.StopHoldParticles();
+        base.UnInit();
+    }
+    
 }

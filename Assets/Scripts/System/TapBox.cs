@@ -17,6 +17,7 @@ public class TapBox : MonoBehaviour
     
     public void TapDown(float _time)
     {
+        Debug.Log("Tapping");
         if(lane != null)
             lane.OnPressDown();
         Transform transform1 = transform;

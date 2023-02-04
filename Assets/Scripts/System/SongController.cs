@@ -61,7 +61,7 @@ public class SongController : MonoBehaviour
 
     private void Update()
     {
-        if (gamePlaying)
+        if (gamePlaying && Application.isFocused)
         {
             //If game is going on, but not audio and no pause, then report game completed
             if (songPlayer.NotPlayingAndNotPaused)
