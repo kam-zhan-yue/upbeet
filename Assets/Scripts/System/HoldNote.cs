@@ -150,7 +150,7 @@ public class HoldNote : Note
 
     private bool ReachedScoreThreshold(Transform _transform)
     {
-        return _transform.position.y <= scoreThresholdY;
+        return _transform.position.y <= scoreThresholdY + OFFSET;
     }
 
     private bool TrailNoteReduced()

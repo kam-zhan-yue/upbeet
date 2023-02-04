@@ -29,7 +29,6 @@ public class TapBox : MonoBehaviour
             if(hitColliders[i].gameObject.TryGetComponent(out TapNote tapNote))
             {
                 tapNote.RecordHit(_time);
-                tapNote.UnInit();
             }
             else if (hitColliders[i].gameObject.TryGetComponent(out HoldNote holdNote))
             {
