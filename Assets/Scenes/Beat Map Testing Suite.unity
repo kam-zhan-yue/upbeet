@@ -557,6 +557,12 @@ MonoBehaviour:
   songPlayer: {fileID: 1359663602}
   scoreController: {fileID: 11400000, guid: 0b5777c067974b84e840b33de8d92ed6, type: 2}
   noteFactory: {fileID: 2092195656}
+  gamePlaying:
+    _usage: 0
+    _value: 0
+    _constant: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
   notePlayerPrefabs:
   - lanes: 5
     notePlayer: {fileID: 6374826788244869124, guid: 0539a64492ab34d4bb75ab0b1bfc796e, type: 3}

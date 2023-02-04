@@ -80,6 +80,7 @@ public class SongController : MonoBehaviour
     public void Restart()
     {
         Stop();
+        Init(currentNotePlayer.BeatMap);
         Play();
     }
 

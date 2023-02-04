@@ -23,6 +23,7 @@ public class NotePlayer : MonoBehaviour
     private List<TapNote> tapNoteList = new();
     private List<HoldNote> holdNoteList = new();
     private List<FlickNote> flickNoteList = new();
+    public BeatMap BeatMap => beatMap;
 
     public void Init(NoteFactory _noteFactory, BeatMap _beatMap)
     {
