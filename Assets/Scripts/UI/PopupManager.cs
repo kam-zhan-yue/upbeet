@@ -22,6 +22,10 @@ public class PopupManager : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
+    }
+
+    private void Start()
+    {
         AudioManager.instance.Play(AudioManager.ROOTS);
     }
 

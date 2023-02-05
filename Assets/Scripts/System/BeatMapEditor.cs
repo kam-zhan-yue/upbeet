@@ -1,10 +1,10 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEngine;
-using Unity.EditorCoroutines.Editor;
 
 public class BeatMapEditor : OdinEditorWindow
 {
@@ -161,3 +161,4 @@ public class BeatMapEditor : OdinEditorWindow
         };
     }
 }
+#endif

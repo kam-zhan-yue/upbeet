@@ -82,6 +82,7 @@ public class BeatMap : SerializedScriptableObject
         return trails;
     }
 
+#if UNITY_EDITOR
     private static NoteType DrawCell(Rect _rect, NoteType _value)
     {
         if (Event.current.type == EventType.MouseDown && _rect.Contains(Event.current.mousePosition))
@@ -113,6 +114,7 @@ public class BeatMap : SerializedScriptableObject
         EditorGUI.DrawRect(_rect.Padding(1), colour);
         return _value;
     }
+#endif
 
     public float GetBeatPositionInSeconds(int _beat)
     {
