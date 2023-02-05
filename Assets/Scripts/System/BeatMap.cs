@@ -139,6 +139,11 @@ public class BeatMap : SerializedScriptableObject
         return beatMap.GetUpperBound(1) + 1;
     }
 
+    public int GetTotalPossibleCombo()
+    {
+        return totalPossibleBeats;
+    }
+    
     public float GetTotalPossibleScore()
     {
         return totalPossibleScore;

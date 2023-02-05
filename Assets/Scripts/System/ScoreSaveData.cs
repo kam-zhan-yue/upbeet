@@ -13,13 +13,15 @@ public class ScoreSaveData
     public int perfect;
     public int okay;
     public int bad;
+    public bool fullCombo;
+    public bool cleared;
 
     public void SetId(string _id)
     {
         beatMap = _id;
     }
 
-    public ScoreSaveData(string _beatMap, float _score, Rank _rank, int _maxCombo, int _perfect, int _okay, int _bad)
+    public ScoreSaveData(string _beatMap, float _score, Rank _rank, int _maxCombo, int _perfect, int _okay, int _bad, bool _fullCombo, bool _cleared)
     {
         beatMap = _beatMap;
         score = _score;
@@ -28,5 +30,7 @@ public class ScoreSaveData
         perfect = _perfect;
         okay = _okay;
         bad = _bad;
+        fullCombo = _fullCombo;
+        cleared = _cleared;
     }
 }

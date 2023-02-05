@@ -11,6 +11,8 @@ public struct UIRecord
     public int perfect;
     public int okay;
     public int bad;
+    public bool cleared;
+    public bool fullCombo;
 
     public UIRecord(string _beatMap)
     {
@@ -21,6 +23,8 @@ public struct UIRecord
         perfect = 0;
         okay = 0;
         bad = 0;
+        cleared = false;
+        fullCombo = false;
     }
 
     public UIRecord(ScoreSaveData _saveData)
@@ -32,5 +36,7 @@ public struct UIRecord
         perfect = _saveData.perfect;
         okay = _saveData.okay;
         bad = _saveData.bad;
+        cleared = _saveData.cleared;
+        fullCombo = _saveData.fullCombo;
     }
 }

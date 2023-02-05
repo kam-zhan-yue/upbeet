@@ -73,7 +73,7 @@ public class ScoreController : SerializedScriptableObject
             maxCombo = combo.Value;
     }
 
-    public ScoreSaveData ProcessResults(BeatMap _beatMap)
+    public ScoreSaveData ProcessResults(BeatMap _beatMap, bool _cleared)
     {
         float totalPossibleScore = _beatMap.GetTotalPossibleScore();
         float percentage = score.Value / totalPossibleScore;
@@ -84,7 +84,8 @@ public class ScoreController : SerializedScriptableObject
             >= 0.55f => Rank.B,
             _ => Rank.C
         };
-        return new(_beatMap.name, score, rank, maxCombo, perfectHits, okayHits, badHits);
+        bool fullCombo = maxCombo == _beatMap.GetTotalPossibleCombo();
+        return new(_beatMap.name, score, rank, maxCombo, perfectHits, okayHits, badHits, fullCombo, _cleared);
     }
 
     public Rank GetRank()

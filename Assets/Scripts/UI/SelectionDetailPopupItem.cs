@@ -9,6 +9,8 @@ public class SelectionDetailPopupItem : MonoBehaviour
     [FoldoutGroup("UI Objects")] public TMP_Text beatMapText;
     [FoldoutGroup("UI Objects")] public RectTransform recordContent;
     [FoldoutGroup("UI Objects")] public RectTransform noSaveDataContent;
+    [FoldoutGroup("UI Objects")] public TMP_Text notClearedText;
+    [FoldoutGroup("UI Objects")] public TMP_Text fullComboText;
     [FoldoutGroup("UI Objects")] public TMP_Text rankText;
     [FoldoutGroup("UI Objects")] public TMP_Text scoreText;
     [FoldoutGroup("UI Objects")] public TMP_Text maxComboText;
@@ -37,7 +39,18 @@ public class SelectionDetailPopupItem : MonoBehaviour
             recordContent.gameObject.SetActiveFast(true);
             noSaveDataContent.gameObject.SetActiveFast(false);
             beatMapText.text = record.beatMap;
-            rankText.text = record.rank.ToString();
+            if (record.cleared)
+            {
+                rankText.gameObject.SetActiveFast(true);
+                rankText.text = record.rank.ToString();
+                notClearedText.gameObject.SetActiveFast(false);
+            }
+            else
+            {
+                rankText.gameObject.SetActiveFast(false);
+                notClearedText.gameObject.SetActiveFast(true);
+            }
+            fullComboText.gameObject.SetActiveFast(record.fullCombo);
             scoreText.text = Mathf.RoundToInt(record.score).ToString();
             maxComboText.text = record.maxCombo.ToString();
             perfectText.text = record.perfect.ToString();

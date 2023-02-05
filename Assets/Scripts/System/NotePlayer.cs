@@ -240,6 +240,17 @@ public class NotePlayer : MonoBehaviour
         }
     }
 
+    public bool IsDead()
+    {
+        for (int i = 0; i < laneList.Count; ++i)
+        {
+            if (!laneList[i].Dead)
+                return false;
+        }
+
+        return true;
+    }
+
     public void ReportLaneDead(Lane _lane)
     {
         Debug.Log($"{_lane.name} dead");

@@ -59,9 +59,10 @@ public class PopupManager : MonoBehaviour
         mainMenuPopup.ShowSongSelection();
     }
 
-    public void ShowResults()
+    public void ShowResults(bool _cleared, bool _maxCombo)
     {
         gamePopup.HidePopup();
+        resultPopup.SetClearedAndFullCombo(_cleared, _maxCombo);
         resultPopup.ShowPopup();
     }
 

@@ -95,11 +95,21 @@ public class SongController : MonoBehaviour
             {
                 Debug.Log("Game Completed.");
                 gamePlaying.Value = false;
-                ScoreSaveData saveData = scoreController.ProcessResults(currentNotePlayer.BeatMap);
+                ScoreSaveData saveData = scoreController.ProcessResults(currentNotePlayer.BeatMap, true);
                 if(saveController != null)
                     saveController.Save(saveData);
                 if(PopupManager.instance != null)
-                    PopupManager.instance.ShowResults();
+                    PopupManager.instance.ShowResults(saveData.cleared, saveData.fullCombo);
+            }
+            else if (currentNotePlayer.IsDead())
+            {
+                Debug.Log("Game Over.");
+                gamePlaying.Value = false;
+                ScoreSaveData saveData = scoreController.ProcessResults(currentNotePlayer.BeatMap, false);
+                if(saveController != null)
+                    saveController.Save(saveData);
+                if(PopupManager.instance != null)
+                    PopupManager.instance.ShowResults(saveData.cleared, saveData.fullCombo);
             }
         }
     }
