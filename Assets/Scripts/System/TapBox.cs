@@ -9,6 +9,7 @@ public class TapBox : MonoBehaviour
     public ScoreController scoreController;
     public float localScaleSizeMultiplier = 0.8f;
     private Collider2D[] hitColliders = new Collider2D[10];
+    public bool tutorial = false;
 
     public void Init(ScoreController _scoreController)
     {
@@ -18,6 +19,11 @@ public class TapBox : MonoBehaviour
     public void TapDown(float _time)
     {
         // Debug.Log("Tapping");
+        if (tutorial)
+        {
+            lane.OnPressDown();
+            return;
+        }
         if(lane != null && !lane.Dead)
             lane.OnPressDown();
         Transform transform1 = transform;
@@ -40,6 +46,11 @@ public class TapBox : MonoBehaviour
 
     public void TapUp()
     {
+        if (tutorial)
+        {
+            lane.OnPressUp();
+            return;
+        }
         if(lane != null && !lane.Dead)
             lane.OnPressUp();
         Transform transform1 = transform;

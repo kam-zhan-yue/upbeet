@@ -9,6 +9,7 @@ public class PopupManager : MonoBehaviour
     public static PopupManager instance;
 
     [FoldoutGroup("System Objects")] public SongController songController;
+    [FoldoutGroup("System Objects")] public TutorialObject tutorialObject;
     
     [FoldoutGroup("UI Objects")] public MainMenuPopup mainMenuPopup;
     [FoldoutGroup("UI Objects")] public PausePopup pausePopup;
@@ -51,6 +52,16 @@ public class PopupManager : MonoBehaviour
     {
         songController.Restart();
         gamePopup.ShowPopup();
+    }
+
+    public void ShowTutorial()
+    {
+        tutorialObject.Show();
+    }
+
+    public void HideTutorial()
+    {
+        tutorialObject.Hide();
     }
 
     public void ExitButtonClicked()

@@ -9,6 +9,7 @@ public class MainMenuPopup : Popup
     [FoldoutGroup("UI Objects")] public TitlePopup titlePopup;
     [FoldoutGroup("UI Objects")] public SongSelectionPopup songSelectionPopup;
     [FoldoutGroup("UI Objects")] public CreditsPopup creditsPopup;
+    [FoldoutGroup("UI Objects")] public TutorialPopup tutorialPopup;
 
     protected override void InitPopup()
     {
@@ -33,6 +34,12 @@ public class MainMenuPopup : Popup
         creditsPopup.ShowPopup();
     }
 
+    public void TutorialButtonClicked()
+    {
+        titlePopup.HidePopup();
+        tutorialPopup.ShowPopup();
+    }
+
     public void BackButtonClicked()
     {
         if (songSelectionPopup.isShowing)
@@ -45,6 +52,11 @@ public class MainMenuPopup : Popup
         else if (creditsPopup.isShowing)
         {
             creditsPopup.HidePopup();
+            titlePopup.ShowPopup();
+        }
+        else if (tutorialPopup.isShowing)
+        {
+            tutorialPopup.HidePopup();
             titlePopup.ShowPopup();
         }
     }
