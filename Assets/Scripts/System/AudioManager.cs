@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public const string PERFECT = "perfect";
     public const string HOLD = "hold";
     public const string BUTTON = "button";
+    public const string ROOTS = "roots";
     
     public static AudioManager instance;
 
@@ -29,6 +30,7 @@ public class AudioManager : MonoBehaviour
             sounds[i].source.clip = sounds[i].clip;
             sounds[i].source.pitch = sounds[i].pitch;
             sounds[i].source.loop = sounds[i].loop;
+            sounds[i].source.volume = sounds[i].volume;
         }
     }
 

@@ -33,6 +33,7 @@ public class Lane : MonoBehaviour
         notePlayer = _notePlayer;
         lives = _lives;
         ClearNotes();
+        laneBackground.color = originalColour;
     }
 
     public void AssignCharacter(Character _character)
@@ -85,12 +86,13 @@ public class Lane : MonoBehaviour
                 spawnPosition.y += distance;
 
                 // spawn the note using the note player
-                Quaternion worldRotation = transform1.parent.rotation;
-                Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition, worldRotation);
                 NoteSpawnData spawnData = noteSpawnList[nextNoteToSpawn_idx];
                 if (spawnData.CanSpawn())
                 {
+                    Quaternion worldRotation = transform1.parent.rotation;
+                    Note note = notePlayer.InstantiateNote(noteSpawnList[nextNoteToSpawn_idx].noteType, spawnPosition, worldRotation);
                     note.Init(notePlayer, this, spawnData);
+                    // Debug.Log($"Assigning {note.name} to {name}");
                     if (useGradient && noteGradient != null)
                     {
                         float random = Random.Range(0f, 1f);
@@ -124,6 +126,8 @@ public class Lane : MonoBehaviour
     public void RemoveNote(Note _note)
     {
         noteList.Remove(_note);
+        //Need to remove the spawn data of notes that have already passed
+        RemoveSpawnData(_note.Beat);
     }
 
     public void RemoveLife()
@@ -131,6 +135,8 @@ public class Lane : MonoBehaviour
         if (godMode)
             return;
         // Debug.Log("Remove Life");
+        if (Dead)
+            return;
         lives--;
         if (lives <= 0)
         {
@@ -141,6 +147,7 @@ public class Lane : MonoBehaviour
                 //Remove all active notes from the spawn list before giving it
                 //to other lanes
                 RemoveSpawnData(noteList[i].Beat);
+                Debug.Log($"Removing {noteList[i].name} at {noteList[i].Beat}");
                 noteList[i].UnInit();
             }
             notePlayer.ReportLaneDead(this);
@@ -208,7 +215,7 @@ public class Lane : MonoBehaviour
                 return false;
         }
         
-        // Debug.Log($"{gameObject.name} Adding {noteType} at {_spawnData.beat} with trail {_spawnData.trailSpawnData.trailBeatLength}");
+        Debug.Log($"{gameObject.name} Adding {noteType} at {_spawnData.beat} with trail {_spawnData.trailSpawnData.trailBeatLength}");
         noteSpawnList.Add(_spawnData);
         for (int i = 0; i < _spawnData.trailSpawnData.trailBeatLength; ++i)
         {

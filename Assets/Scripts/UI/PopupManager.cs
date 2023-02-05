@@ -21,10 +21,12 @@ public class PopupManager : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
+        AudioManager.instance.Play(AudioManager.ROOTS);
     }
 
     public void PlaySong(BeatMap _beatMap)
     {
+        AudioManager.instance.Stop(AudioManager.ROOTS);
         songController.Init(_beatMap);
         songController.Play();
         gamePopup.ShowPopup();
@@ -53,6 +55,7 @@ public class PopupManager : MonoBehaviour
 
     public void ExitButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.ROOTS);
         songController.Stop();
         songController.CloseNotePlayer();
         gamePopup.HidePopup();

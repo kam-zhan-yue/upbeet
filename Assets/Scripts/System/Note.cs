@@ -54,6 +54,7 @@ public abstract class Note : MonoBehaviour
     public virtual void RecordMiss()
     {
         missed = true;
+        // Debug.Log($"Recording miss to {lane.name}, Name {gameObject.name}, Transform {gameObject.transform.position}");
         if(scoreController.damageMode && lane != null)
             lane.RemoveLife();
     }
