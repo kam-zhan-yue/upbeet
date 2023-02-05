@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40715ea1255f31d4bb9c8a79f41e3cd6
+guid: ad6415ae13b31dc4689d375a53b3999d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: carrot_idle_2_0
+      name: gsharp idle (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,20 +137,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b61545c247f2f7f458c7058be792692c
-      internalID: -1213220244
+      spriteID: 582688ea3f639ac499f9e99099f19806
+      internalID: -685532306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_1
+      name: gsharp idle (3)_1
       rect:
         serializedVersion: 2
         x: 256
@@ -158,20 +158,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c82c65d453c5db3479596fd92a3d9201
-      internalID: 1609522616
+      spriteID: 47cd19604ad8aa74593aaae7715a4263
+      internalID: -555416250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_2
+      name: gsharp idle (3)_2
       rect:
         serializedVersion: 2
         x: 512
@@ -179,20 +179,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f605637e5a2e14083c79e69f1d7185
-      internalID: -1301793289
+      spriteID: e9306d0a7feea8540b20e39f07952d6b
+      internalID: -1450052519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_3
+      name: gsharp idle (3)_3
       rect:
         serializedVersion: 2
         x: 768
@@ -200,20 +200,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a9e185de979dd94c98a50a2c83db8f7
-      internalID: -108758402
+      spriteID: 0e91969f84f4b5642851d4acc50084c2
+      internalID: 618117726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_4
+      name: gsharp idle (3)_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -221,20 +221,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 1, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80285d0d8640a4c42a62cf9d7f998e78
-      internalID: 1004535501
+      spriteID: 948a2d87f0eb6f845a63de40622afbe8
+      internalID: -976600371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_5
+      name: gsharp idle (3)_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -242,20 +242,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be741d64377dd8a46bbffb90203eb55a
-      internalID: 389214480
+      spriteID: 9101ef2b458d8df4f8881673b53d7e9e
+      internalID: 1911944817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: carrot_idle_2_6
+      name: gsharp idle (3)_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -263,14 +263,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bf3435034ffeb0419b4dc1982ff9de7
-      internalID: 101680377
+      spriteID: c25dcec9ffd52134a975fdbb071c2c3d
+      internalID: 764793897
       vertices: []
       indices: 
       edges: []
@@ -286,13 +286,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      carrot_idle_2_2: -1301793289
-      carrot_idle_2_4: 1004535501
-      carrot_idle_2_0: -1213220244
-      carrot_idle_2_3: -108758402
-      carrot_idle_2_5: 389214480
-      carrot_idle_2_6: 101680377
-      carrot_idle_2_1: 1609522616
+      gsharp idle (3)_1: -555416250
+      gsharp idle (3)_0: -685532306
+      gsharp idle (3)_2: -1450052519
+      gsharp idle (3)_5: 1911944817
+      gsharp idle (3)_4: -976600371
+      gsharp idle (3)_3: 618117726
+      gsharp idle (3)_6: 764793897
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

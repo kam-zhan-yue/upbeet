@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 56dfca63ea063444cb5168e4c6daf5d8
+guid: 89abfdf2ac054f54788204e14c59ccbc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: beet_idle_2_0
+      name: carrot top idle (3)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -138,19 +138,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bf84b164b07ef94da63e4c283e4feed
-      internalID: 641015002
+      spriteID: d03ca4cf4dff70448ae2e784e85a08d3
+      internalID: 1016658483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_1
+      name: carrot top idle (3)_1
       rect:
         serializedVersion: 2
         x: 256
@@ -159,19 +159,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d800354ed93d7f428bf0a1686b9aea6
-      internalID: 406190865
+      spriteID: ea97b17a9bba3114baa7793a7a07c5e4
+      internalID: 295014735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_2
+      name: carrot top idle (3)_2
       rect:
         serializedVersion: 2
         x: 512
@@ -180,19 +180,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f84df3c2ed8434f4b930742f8719a904
-      internalID: 955490434
+      spriteID: 38916ec8730a14e48b0a011e9db09189
+      internalID: 1386062481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_3
+      name: carrot top idle (3)_3
       rect:
         serializedVersion: 2
         x: 768
@@ -201,19 +201,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9900d7455be8cdd4b8c78237341d0da3
-      internalID: 553233852
+      spriteID: d15268acf33f52e43a3b03e14c237be3
+      internalID: -762372979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_4
+      name: carrot top idle (3)_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -222,19 +222,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97f801e3d8bc5e44a92df8a88a6e7b7b
-      internalID: -1181704766
+      spriteID: 516252eb185be6743aa9d3595b143dac
+      internalID: -1783948574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_5
+      name: carrot top idle (3)_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -243,19 +243,19 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f56f6c9f675f1544e8fbf73901955759
-      internalID: -500800077
+      spriteID: 93335f2516455b64c8f400ac094e683c
+      internalID: 1452325832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beet_idle_2_6
+      name: carrot top idle (3)_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -264,13 +264,13 @@ TextureImporter:
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 3, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1d38f78781c91e4cb46bc53590eaca9
-      internalID: 1156029602
+      spriteID: 4722b7646244d2d4ab0c1ffafea3536a
+      internalID: -1131209969
       vertices: []
       indices: 
       edges: []
@@ -286,13 +286,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      beet_idle_2_4: -1181704766
-      beet_idle_2_3: 553233852
-      beet_idle_2_5: -500800077
-      beet_idle_2_6: 1156029602
-      beet_idle_2_2: 955490434
-      beet_idle_2_0: 641015002
-      beet_idle_2_1: 406190865
+      carrot top idle (3)_2: 1386062481
+      carrot top idle (3)_4: -1783948574
+      carrot top idle (3)_5: 1452325832
+      carrot top idle (3)_0: 1016658483
+      carrot top idle (3)_3: -762372979
+      carrot top idle (3)_1: 295014735
+      carrot top idle (3)_6: -1131209969
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
