@@ -47,6 +47,7 @@ public class ScoreController : SerializedScriptableObject
     {
         badHits.Value++;
         combo.Value = 0;
+        AudioManager.instance.Play(AudioManager.BAD);
     }
 
     public void PerfectHit()
@@ -65,6 +66,7 @@ public class ScoreController : SerializedScriptableObject
         UpdateMaxCombo();
         float noteScore = GetNoteScore(Grade.Okay, combo.Value, NoteType.Tap);
         score.Value += noteScore;
+        AudioManager.instance.Play(AudioManager.OKAY);
     }
 
     private void UpdateMaxCombo()

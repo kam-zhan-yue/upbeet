@@ -118,6 +118,7 @@ public class HoldNote : Note
                 {
                     if (!playingParticles)
                     {
+                        AudioManager.instance.Play(AudioManager.HOLD);
                         lane.PlayHoldParticles();
                         playingParticles = true;
                     }
@@ -126,6 +127,7 @@ public class HoldNote : Note
                 {
                     if (playingParticles)
                     {
+                        AudioManager.instance.Stop(AudioManager.HOLD);
                         lane.StopHoldParticles();
                         playingParticles = false;
                     }
@@ -277,10 +279,12 @@ public class HoldNote : Note
 
         if (difference <= scoreController.perfectThreshold.Value)
         {
+            // AudioManager.instance.Play(AudioManager.PERFECT);
             scoreController.PerfectHit();
         }
         else if(difference <= scoreController.okayThreshold.Value)
         {
+            AudioManager.instance.Play(AudioManager.OKAY);
             scoreController.OkayHit();
         }
     }

@@ -70,4 +70,9 @@ public class PopupManager : MonoBehaviour
     {
         instance = null;
     }
+
+    public void PlayButtonSound()
+    {
+        AudioManager.instance.Play(AudioManager.BUTTON);
+    }
 }

@@ -22,6 +22,7 @@ public class MainMenuPopup : Popup
 
     public void PlayButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         ShowSongSelection();
     }
 
@@ -29,6 +30,7 @@ public class MainMenuPopup : Popup
     {
         if (songSelectionPopup.isShowing)
         {
+            AudioManager.instance.Play(AudioManager.BUTTON);
             songSelectionPopup.HidePopup();
             titlePopup.ShowPopup();
         }
@@ -36,6 +38,7 @@ public class MainMenuPopup : Popup
 
     public void ShowSongSelection()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         titlePopup.HidePopup();
         songSelectionPopup.ShowPopup();
     }

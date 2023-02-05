@@ -49,9 +49,11 @@ public class TapNote : Note
         if (difference <= scoreController.perfectThreshold.Value)
         {
             scoreController.PerfectHit();
+            // AudioManager.instance.Play(AudioManager.PERFECT);
         }
         else if(difference <= scoreController.okayThreshold.Value)
         {
+            AudioManager.instance.Play(AudioManager.OKAY);
             scoreController.OkayHit();
         }
         

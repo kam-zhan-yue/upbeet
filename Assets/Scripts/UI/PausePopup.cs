@@ -61,11 +61,12 @@ public class PausePopup : Popup
 
     public void SettingsButtonClicked()
     {
-        
+        AudioManager.instance.Play(AudioManager.BUTTON);
     }
 
     public void ResumeButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         mediaHolder.gameObject.SetActiveFast(false);
         countdownActive = true;
         countdownItem.Activate(() =>
@@ -79,6 +80,7 @@ public class PausePopup : Popup
 
     public void RestartButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.RestartButtonClicked();
         mainHolder.gameObject.SetActiveFast(false);
         HidePopup();
@@ -86,6 +88,7 @@ public class PausePopup : Popup
 
     public void ExitButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.ExitButtonClicked();
         mainHolder.gameObject.SetActiveFast(false);
         HidePopup();

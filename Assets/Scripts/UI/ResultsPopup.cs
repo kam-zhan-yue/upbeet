@@ -37,6 +37,10 @@ public class ResultsPopup : Popup
         contentHolder.gameObject.SetActiveFast(true);
         UpdateRank();
         UpdateStats();
+        if (cleared)
+        {
+            AudioManager.instance.Play(AudioManager.APPLAUSE);
+        }
     }
 
     public void SetClearedAndFullCombo(bool _cleared, bool _fullCombo)
@@ -67,16 +71,20 @@ public class ResultsPopup : Popup
 
     public void RestartButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.RestartButtonClicked();
         contentHolder.gameObject.SetActiveFast(false);
         HidePopup();
+        AudioManager.instance.Stop(AudioManager.APPLAUSE);
     }
 
     public void ExitButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.ExitButtonClicked();
         contentHolder.gameObject.SetActiveFast(false);
         HidePopup();
+        AudioManager.instance.Stop(AudioManager.APPLAUSE);
     }
     
     public override void HidePopup()

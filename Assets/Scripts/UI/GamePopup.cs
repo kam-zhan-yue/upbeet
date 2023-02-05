@@ -36,6 +36,7 @@ public class GamePopup : Popup
 
     public void PauseButtonClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.PauseButtonPressed();
     }
 

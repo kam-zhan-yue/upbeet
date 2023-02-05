@@ -30,6 +30,7 @@ public class SelectionPopupItem : MonoBehaviour
     
     public void SongClicked()
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         PopupManager.instance.PlaySong(beatMap);
     }
 }

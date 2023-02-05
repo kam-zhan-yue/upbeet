@@ -54,6 +54,7 @@ public class Lane : MonoBehaviour
     public void OnPressDown()
     {
         laneBackground.color = pressedDownColour;
+        AudioManager.instance.Play(AudioManager.PERFECT);
     }
 
     public void OnPressUp()

@@ -49,6 +49,7 @@ public class SongSelectionPopup : Popup
 
     public void ShowDetail(BeatMap _beatMap)
     {
+        AudioManager.instance.Play(AudioManager.BUTTON);
         if(beatMapDatabase.TryGetSave(_beatMap, out ScoreSaveData saveData))
         {
             UIRecord record = new (saveData);
