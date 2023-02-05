@@ -17,8 +17,8 @@ public class TapBox : MonoBehaviour
     
     public void TapDown(float _time)
     {
-        Debug.Log("Tapping");
-        if(lane != null)
+        // Debug.Log("Tapping");
+        if(lane != null && !lane.Dead)
             lane.OnPressDown();
         Transform transform1 = transform;
         int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);
@@ -40,7 +40,7 @@ public class TapBox : MonoBehaviour
 
     public void TapUp()
     {
-        if(lane != null)
+        if(lane != null && !lane.Dead)
             lane.OnPressUp();
         Transform transform1 = transform;
         int size = Physics2D.OverlapBoxNonAlloc(transform1.position, transform1.localScale * localScaleSizeMultiplier, 0f, hitColliders);

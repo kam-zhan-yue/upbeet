@@ -5,7 +5,7 @@ public abstract class Note : MonoBehaviour
 {
     public ScoreController scoreController;
     public SpriteRenderer spriteRenderer;
-    private NotePlayer notePlayer;
+    protected NotePlayer notePlayer;
     protected Lane lane;
     private int beat;
     private float position;

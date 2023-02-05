@@ -12,14 +12,15 @@ public class Lane : MonoBehaviour
     public bool useGradient = false;
     public Gradient noteGradient;
     public Color noteColour;
+    public Color originalColour;
+    public Color pressedDownColour;
+    public Color deadColour;
     
     public bool IsPlaying { get; set; }
     public float SecondsIntoTrack { get; set; }
     public bool Dead => lives <= 0;
 
     public SpriteRenderer laneBackground;
-    public float idleAlpha = 0f;
-    public float pressedAlpha = 0f;
     private List<NoteSpawnData> noteSpawnList = new();
     private List<Note> noteList = new();
     private NotePlayer notePlayer;
@@ -52,16 +53,12 @@ public class Lane : MonoBehaviour
 
     public void OnPressDown()
     {
-        Color colour = laneBackground.color;
-        colour.a = pressedAlpha / 256f;
-        laneBackground.color = colour;
+        laneBackground.color = pressedDownColour;
     }
 
     public void OnPressUp()
     {
-        Color colour = laneBackground.color;
-        colour.a = idleAlpha / 256f;
-        laneBackground.color = colour;
+        laneBackground.color = originalColour;
     }
     
     private void Update()
@@ -132,10 +129,12 @@ public class Lane : MonoBehaviour
     {
         if (godMode)
             return;
-        Debug.Log("Remove Life");
+        // Debug.Log("Remove Life");
         lives--;
         if (lives <= 0)
         {
+            laneBackground.color = deadColour;
+            character.PlayLose();
             for (int i = noteList.Count - 1; i >= 0; --i)
             {
                 //Remove all active notes from the spawn list before giving it
@@ -208,13 +207,13 @@ public class Lane : MonoBehaviour
                 return false;
         }
         
-        Debug.Log($"{gameObject.name} Adding {noteType} at {_spawnData.beat} with trail {_spawnData.trailSpawnData.trailBeatLength}");
+        // Debug.Log($"{gameObject.name} Adding {noteType} at {_spawnData.beat} with trail {_spawnData.trailSpawnData.trailBeatLength}");
         noteSpawnList.Add(_spawnData);
         for (int i = 0; i < _spawnData.trailSpawnData.trailBeatLength; ++i)
         {
             int beatToInsert = _spawnData.beat - (i+1);
             noteSpawnList.Add(NoteSpawnData.GetHoldTrailData(beatToInsert));
-            Debug.Log($"{gameObject.name} Adding trail at {beatToInsert}");
+            // Debug.Log($"{gameObject.name} Adding trail at {beatToInsert}");
         }
         
         return true;

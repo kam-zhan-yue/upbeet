@@ -164,15 +164,25 @@ public class HoldNote : Note
         }
     }
 
-    public void CheckInitialMiss(float _songTime)
+    private void Update()
     {
-        float missTime = Position + scoreController.okayThreshold.Value;
-        if(_songTime > missTime)
-            RecordMiss();
+        CheckHold(notePlayer.songPosition);
     }
 
     public void CheckHold(float _songTime)
     {
+        //CHeck initial miss
+        float missTime = Position + scoreController.okayThreshold.Value;
+        if (_songTime > missTime)
+        {
+            //If not missed and not hit, record the miss
+            //Should only happen for the head note when it reaches the score threshold
+            if (!Missed && !Hit)
+            {
+                RecordMiss();
+                return;
+            }
+        }
         for (int i = 0; i < stepList.Count; ++i)
         {
             if (!stepList[i].CanCheck(_songTime))

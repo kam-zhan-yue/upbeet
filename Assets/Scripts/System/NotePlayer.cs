@@ -130,16 +130,26 @@ public class NotePlayer : MonoBehaviour
 
     private void Update()
     {
-        CheckHoldNote();
+        // CheckHoldNote();
         CheckCanDespawn();
     }
 
     private void CheckHoldNote()
     {
-        for (int i = holdNoteList.Count - 1; i >= 0; --i)
+        int i = 0;
+        try
         {
-            holdNoteList[i].CheckInitialMiss(songPosition);
-            holdNoteList[i].CheckHold(songPosition);
+            for (i = holdNoteList.Count - 1; i >= 0; --i)
+            {
+                //Must check before doing hold otherwise it erase the hold notes if the lane dies
+                holdNoteList[i].CheckHold(songPosition);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Tried checking {i} when list is length {holdNoteList.Count}");
+            Console.WriteLine(e);
+            throw;
         }
     }
 
