@@ -8,6 +8,7 @@ public class MainMenuPopup : Popup
 {
     [FoldoutGroup("UI Objects")] public TitlePopup titlePopup;
     [FoldoutGroup("UI Objects")] public SongSelectionPopup songSelectionPopup;
+    [FoldoutGroup("UI Objects")] public CreditsPopup creditsPopup;
 
     protected override void InitPopup()
     {
@@ -26,12 +27,24 @@ public class MainMenuPopup : Popup
         ShowSongSelection();
     }
 
+    public void CreditsButtonClicked()
+    {
+        titlePopup.HidePopup();
+        creditsPopup.ShowPopup();
+    }
+
     public void BackButtonClicked()
     {
         if (songSelectionPopup.isShowing)
         {
             AudioManager.instance.Play(AudioManager.BUTTON);
             songSelectionPopup.HidePopup();
+            titlePopup.ShowPopup();
+        }
+
+        else if (creditsPopup.isShowing)
+        {
+            creditsPopup.HidePopup();
             titlePopup.ShowPopup();
         }
     }

@@ -9,10 +9,14 @@ using UnityEngine;
 public class TitlePopup : Popup
 {
     [FoldoutGroup("UI Objects")] public RectTransform[] buttonTransforms = Array.Empty<RectTransform>();
+    [FoldoutGroup("UI Objects")] public RectTransform logoTransform;
     [FoldoutGroup("Parameters")] public float offsetX = 0f;
     [FoldoutGroup("Parameters")] public float targetX = 0f;
     [FoldoutGroup("Parameters")] public float slideDuration = 0f;
     [FoldoutGroup("Parameters")] public float slideInterval = 0f;
+    [FoldoutGroup("Parameters")] public Vector3 smallScale;
+    // [FoldoutGroup("Parameters")] public float scaleDuration;
+    [FoldoutGroup("Parameters")] public Ease ease;
 
     protected override void InitPopup()
     {
@@ -25,6 +29,8 @@ public class TitlePopup : Popup
         gameObject.SetActiveFast(true);
         ResetButtons();
         Timing.RunCoroutine(SlideButtons());
+        logoTransform.localScale = smallScale;
+        logoTransform.DOScale(Vector3.one, slideDuration).SetEase(ease);
         base.ShowPopup();
     }
 
