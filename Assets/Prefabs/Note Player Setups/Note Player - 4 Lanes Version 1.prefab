@@ -415,15 +415,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.b
-      value: 0
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.g
-      value: 0
+      value: 0.46274513
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.r
-      value: 0
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -439,15 +439,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.b
-      value: 0.6627451
+      value: 0.2901961
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.g
-      value: 0.7254902
+      value: 0.4862745
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.r
-      value: 0.84313726
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteGradient.key0.b
@@ -479,15 +479,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.b
-      value: 0.6627451
+      value: 0.2901961
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.g
-      value: 0.7254902
+      value: 0.4862745
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.r
-      value: 0.84313726
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 3907713329569000762, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -543,15 +543,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.b
-      value: 0
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.g
-      value: 0
+      value: 0.46274513
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.r
-      value: 0
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -567,15 +567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.b
-      value: 0.47843137
+      value: 0.47058824
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.g
-      value: 0.35686275
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.r
-      value: 0.70980394
+      value: 0.7372549
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteGradient.key0.b
@@ -607,15 +607,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.b
-      value: 0.47843137
+      value: 0.47058824
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.g
-      value: 0.35686275
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.r
-      value: 0.70980394
+      value: 0.7372549
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070128, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_Name
@@ -635,15 +635,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.b
-      value: 0
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.g
-      value: 0
+      value: 0.46274513
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.r
-      value: 0
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
@@ -659,15 +659,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.b
-      value: 0.3647059
+      value: 0.35686275
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.g
-      value: 0.34901962
+      value: 0.34509805
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.r
-      value: 0.85490197
+      value: 0.7529412
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteGradient.key0.b
@@ -699,15 +699,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.b
-      value: 0.3647059
+      value: 0.35686275
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.g
-      value: 0.34901962
+      value: 0.34509805
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: pressedDownColour.r
-      value: 0.85490197
+      value: 0.7529412
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070131, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: m_LocalScale.x
@@ -803,15 +803,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.b
-      value: 0
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.g
-      value: 0
+      value: 0.46274513
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: noteColour.r
-      value: 0
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: tapParticles
