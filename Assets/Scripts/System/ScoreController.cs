@@ -81,9 +81,9 @@ public class ScoreController : SerializedScriptableObject
         float percentage = score.Value / totalPossibleScore;
         rank = percentage switch
         {
-            >= 0.85f => Rank.S,
-            >= 0.70f => Rank.A,
-            >= 0.55f => Rank.B,
+            >= 0.8f => Rank.S,
+            >= 0.6f => Rank.A,
+            >= 0.4f => Rank.B,
             _ => Rank.C
         };
         bool fullCombo = maxCombo == _beatMap.GetTotalPossibleCombo();

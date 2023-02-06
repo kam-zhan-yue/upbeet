@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ public class Lane : MonoBehaviour
     public Color originalColour;
     public Color pressedDownColour;
     public Color deadColour;
+
+    public bool useCustomLives = false;
+    [ShowIf("useCustomLives")]
+    public int customLives = 0;
     
     public bool IsPlaying { get; set; }
     public float SecondsIntoTrack { get; set; }
@@ -31,7 +36,7 @@ public class Lane : MonoBehaviour
     public void Init(NotePlayer _notePlayer, int _lives)
     {
         notePlayer = _notePlayer;
-        lives = _lives;
+        lives = useCustomLives ? customLives : _lives;
         ClearNotes();
         laneBackground.color = originalColour;
     }
@@ -172,7 +177,7 @@ public class Lane : MonoBehaviour
         if (tapParticles == null)
             return;
         tapParticles.Play();
-        if(character != null)
+        if(character != null && !Dead)
             character.PlayTap();
     }
 
@@ -181,7 +186,7 @@ public class Lane : MonoBehaviour
         if (holdParticles == null)
             return;
         holdParticles.Play();
-        if(character != null)
+        if(character != null && !Dead)
             character.PlayHold();
     }
 
@@ -190,7 +195,7 @@ public class Lane : MonoBehaviour
         if (holdParticles == null)
             return;
         holdParticles.Stop();
-        if(character != null)
+        if(character != null && !Dead)
             character.PlayIdle();
     }
 

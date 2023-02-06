@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityAtoms.BaseAtoms;
 using UnityEngine;
 
 public class TapBox : MonoBehaviour
 {
     public Lane lane;
     public ScoreController scoreController;
+    public FloatReference songPosition;
     public float localScaleSizeMultiplier = 0.8f;
     private Collider2D[] hitColliders = new Collider2D[10];
     public bool tutorial = false;
@@ -15,7 +17,22 @@ public class TapBox : MonoBehaviour
     {
         scoreController = _scoreController;
     }
-    
+
+    private void OnMouseDown()
+    {
+        TapDown(songPosition);
+    }
+
+    private void OnMouseUp()
+    {
+        TapUp();
+    }
+
+    private void OnMouseExit()
+    {
+        TapUp();
+    }
+
     public void TapDown(float _time)
     {
         // Debug.Log("Tapping");

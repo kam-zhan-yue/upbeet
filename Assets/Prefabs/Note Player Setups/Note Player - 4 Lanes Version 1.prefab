@@ -406,6 +406,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: customLives
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: deadColour.a
       value: 0.5882353
       objectReference: {fileID: 0}
@@ -433,6 +437,10 @@ PrefabInstance:
       propertyPath: holdParticles
       value: 
       objectReference: {fileID: 3181272141269902190}
+    - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: useCustomLives
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3868248336438426851, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.a
       value: 0.5882353
@@ -534,6 +542,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: customLives
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: deadColour.a
       value: 0.5882353
       objectReference: {fileID: 0}
@@ -561,6 +573,10 @@ PrefabInstance:
       propertyPath: holdParticles
       value: 
       objectReference: {fileID: 1796782400309365547}
+    - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: useCustomLives
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522890201418282011, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.a
       value: 0.5882353
@@ -626,6 +642,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: customLives
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: deadColour.a
       value: 0.5882353
       objectReference: {fileID: 0}
@@ -653,6 +673,10 @@ PrefabInstance:
       propertyPath: holdParticles
       value: 
       objectReference: {fileID: 8799659251000086322}
+    - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: useCustomLives
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5383459541754070130, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.a
       value: 1
@@ -782,6 +806,10 @@ PrefabInstance:
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: customLives
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: deadColour.a
       value: 0.5882353
       objectReference: {fileID: 0}
@@ -821,6 +849,10 @@ PrefabInstance:
       propertyPath: holdParticles
       value: 
       objectReference: {fileID: 2105525891968655224}
+    - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: useCustomLives
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8741006280117730525, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: originalColour.a
       value: 0.5882353
