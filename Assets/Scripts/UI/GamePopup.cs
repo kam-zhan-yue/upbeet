@@ -10,6 +10,7 @@ public class GamePopup : Popup
     [FoldoutGroup("System Objects")] public ScoreController scoreController;
     
     [FoldoutGroup("UI Objects")] public RectTransform contentHolder;
+    [FoldoutGroup("UI Objects")] public RectTransform mobileButtonHolder;
     [FoldoutGroup("UI Objects")] public TMP_Text scoreText;
     [FoldoutGroup("UI Objects")] public TMP_Text perfectText;
     [FoldoutGroup("UI Objects")] public TMP_Text okayText;
@@ -31,6 +32,7 @@ public class GamePopup : Popup
         base.ShowPopup();
         gameObject.SetActiveFast(true);
         contentHolder.gameObject.SetActiveFast(true);
+        mobileButtonHolder.gameObject.SetActiveFast(PopupManager.instance.isMobile());
         UpdateDetails();
     }
 

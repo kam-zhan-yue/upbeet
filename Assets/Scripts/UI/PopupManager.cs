@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,6 +16,19 @@ public class PopupManager : MonoBehaviour
     [FoldoutGroup("UI Objects")] public PausePopup pausePopup;
     [FoldoutGroup("UI Objects")] public GamePopup gamePopup;
     [FoldoutGroup("UI Objects")] public ResultsPopup resultPopup;
+    [DllImport("__Internal")]
+    private static extern bool IsMobile();
+
+    public bool isMobile()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+         return IsMobile();
+#endif
+#if UNITY_EDITOR
+        return true;
+#endif
+        return false;
+    }
     
     private void Awake()
     {
@@ -87,6 +101,16 @@ public class PopupManager : MonoBehaviour
     private void OnDestroy()
     {
         instance = null;
+    }
+
+    public void OnMobileTapDown(int _lane)
+    {
+        songController.GetCurrentPlayerController().OnMobileTapDown(_lane);
+    }
+
+    public void OnMobileTapUp(int _lane)
+    {
+        songController.GetCurrentPlayerController().OnMobileTapUp(_lane);
     }
 
     public void PlayButtonSound()

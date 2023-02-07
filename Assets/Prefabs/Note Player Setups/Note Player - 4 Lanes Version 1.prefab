@@ -365,6 +365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Note Player - 4 Lanes Version 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2417783983877830781, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 3868498343842982205}
     - target: {fileID: 2432984575564582930, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
       propertyPath: lane
       value: 
@@ -946,6 +950,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7795023936024724196, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
   m_PrefabInstance: {fileID: 6449953217065318522}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3868498343842982205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7795023935982162247, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}
+  m_PrefabInstance: {fileID: 6449953217065318522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da26f09d06899a40b9c278d93267d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4274074227915512180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7120852481262657806, guid: 82b303ed6681d764ba5750c9f58e6dc4, type: 3}

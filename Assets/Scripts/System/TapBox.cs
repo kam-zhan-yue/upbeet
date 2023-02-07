@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityAtoms.BaseAtoms;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TapBox : MonoBehaviour
 {
@@ -18,20 +19,22 @@ public class TapBox : MonoBehaviour
         scoreController = _scoreController;
     }
 
-    private void OnMouseDown()
-    {
-        TapDown(songPosition);
-    }
-
-    private void OnMouseUp()
-    {
-        TapUp();
-    }
-
-    private void OnMouseExit()
-    {
-        TapUp();
-    }
+    // public void OnMouseDown()
+    // {
+    //     Debug.Log("On Pointer Down");
+    //     TapDown(songPosition);
+    // }
+    //
+    // private void OnMouseUpAsButton()
+    // {
+    //     TapUp();
+    // }
+    //
+    // public void OnPointerUp(PointerEventData _eventData)
+    // {
+    //     Debug.Log("On Pointer Down");
+    //     TapUp();
+    // }
 
     public void TapDown(float _time)
     {

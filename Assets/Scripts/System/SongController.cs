@@ -21,6 +21,7 @@ public class SongController : MonoBehaviour
         public Character character;
     }
 
+    public PlayerController tutorialPlayerController;
     public SongPlayer songPlayer;
     public ScoreController scoreController;
     public NoteFactory noteFactory;
@@ -172,6 +173,18 @@ public class SongController : MonoBehaviour
         return null;
     }
 
+    public NotePlayer GetCurrentNotePlayer()
+    {
+        return currentNotePlayer;
+    }
+
+    public PlayerController GetCurrentPlayerController()
+    {
+        if (currentNotePlayer == null)
+            return tutorialPlayerController;
+        return currentNotePlayer.playerController;
+    }
+    
     public void CloseNotePlayer()
     {
         currentNotePlayer.gameObject.SetActiveFast(false);

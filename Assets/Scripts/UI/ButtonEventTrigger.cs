@@ -17,6 +17,7 @@ public class ButtonEventTrigger : MonoBehaviour
     private void Awake()
     {
         image = GetComponent<Image>();
+        image.color = defaultColour;
     }
     
     public void OnPointerEnter(BaseEventData _eventData)

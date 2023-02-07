@@ -98,6 +98,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Value"",
+                    ""id"": ""6a4cb29e-e708-4ec7-94ea-738798e2cb80"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -188,6 +197,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""938d1d31-a27e-40f4-9cc0-f359a6f83b26"",
+                    ""path"": ""<Touchscreen>/touch*/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +224,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_RightLane2 = m_Player.FindAction("Right Lane 2", throwIfNotFound: true);
         m_Player_RightLane3 = m_Player.FindAction("Right Lane 3", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightLane2;
     private readonly InputAction m_Player_RightLane3;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Touch;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @RightLane2 => m_Wrapper.m_Player_RightLane2;
         public InputAction @RightLane3 => m_Wrapper.m_Player_RightLane3;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Touch => m_Wrapper.m_Player_Touch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Touch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouch;
+                @Touch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouch;
+                @Touch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouch;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -344,6 +370,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Touch.started += instance.OnTouch;
+                @Touch.performed += instance.OnTouch;
+                @Touch.canceled += instance.OnTouch;
             }
         }
     }
@@ -358,5 +387,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRightLane2(InputAction.CallbackContext context);
         void OnRightLane3(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

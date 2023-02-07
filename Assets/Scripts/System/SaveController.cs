@@ -26,8 +26,8 @@ public class SaveController : MonoBehaviour
 
     private void EnsureDirectoryExists()
     {
-        if (!Directory.Exists(Application.persistentDataPath + SAVE_PATH))
-            Directory.CreateDirectory(Application.persistentDataPath + SAVE_PATH);
+        if (!Directory.Exists(Application.dataPath + SAVE_PATH))
+            Directory.CreateDirectory(Application.dataPath + SAVE_PATH);
     }
 
     public void Save(ScoreSaveData _save)
@@ -36,7 +36,7 @@ public class SaveController : MonoBehaviour
         {
             beatMapDatabase.InsertSave(_save);
             string jsonString = JsonUtility.ToJson(_save);
-            string file = Application.persistentDataPath + SAVE_PATH + _save.beatMap + TXT;
+            string file = Application.dataPath + SAVE_PATH + _save.beatMap + TXT;
             File.WriteAllText(file, jsonString);
             Debug.Log($"Saving to {file}\n{jsonString}");
         }
@@ -48,7 +48,7 @@ public class SaveController : MonoBehaviour
         for (int i = 0; i < beatMapDatabase.beatMapList.Count; ++i)
         {
             string beatMapName = beatMapDatabase.beatMapList[i].name;
-            string file = Application.persistentDataPath + SAVE_PATH + beatMapName + TXT;
+            string file = Application.dataPath + SAVE_PATH + beatMapName + TXT;
             if (!File.Exists(file))
             {
                 Debug.Log($"No file found at {file}");
